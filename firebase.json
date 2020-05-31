@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/ColonialIndiav2",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+#introContainer {
+  background-color: #d9ccb9;
+  padding: 50px;
+}
+
+
+#debateDateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: montserratBold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-right: 1px solid #b7ab9b;
+  border-bottom: 1px solid #b7ab9b;
+  width: 100%;
+  height: inherit;
+  padding: 0px;
+  padding-right: 10px;
+  margin-bottom: 15px;
+  color: black;
+  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138); 
+}
+
+#eraDateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: montserratBold;
+  font-size: 12px;
+  letter-spacing: 1px;
+  border-right: 1px solid #b7ab9b;
+  border-bottom: 1px solid #b7ab9b;
+  box-shadow:  3px 3px 6px -3px rgba(0, 0, 0, 0.229138);
+}
+
+#debateSubHeaading{
+  font-family: montserratBold;
+  letter-spacing: 0.833333px;
+  color: #594E47;
+}
+
+.debateDetails{
+  font-family: montserratBold;
+  font-size: 12px;
+  letter-spacing: 1.25px;
+  color: #594E47;
+  line-height: 20px;
+  text-align: justify;
+}
+
+#infoText {
+  font-family: merriweatherBold;
+  font-size: 30px;
+  letter-spacing: 1.25px;
+  margin-bottom: 10px;
+}
+
+#whySection {
+  padding-left: 50px;
+}
+
+#whySection h2 {
+  letter-spacing: 1px;
+  font-family: merriweatherBold;
+  font-size: 40px;
+}
+
+#eraInfoText {
+  font-family: montserratBold;
+  letter-spacing: 1.25px;
+  font-size: 12px;
+  text-align: justify;
+  color: #594E47;
+  text-align: justify;
+  line-height: 20px;
+}
+
+#eraInfoParagraph {
+  text-align: justify;
+  padding-left: 10px;
+  font-family: montserratBold;
+  letter-spacing: 1.25px;
+  font-size: 12px;
+  color: #594E47;
+}

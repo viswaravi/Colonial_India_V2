@@ -1,0 +1,48 @@
+#eventsContainer {
+  padding: 50px;
+  background-color: #d9ccb9;
+}
+
+#eventHead {
+  font-size: 40px;
+  letter-spacing: 1px;
+  font-family: merriweatherBold;
+}
+
+#eventDate {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0px;
+  border-right: 1px solid #b7ab9b;
+  border-bottom: 1px solid #b7ab9b;
+  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138); 
+  color: black;
+  font-family: montserratBold;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+#eventSubHead {
+  font-family: montserratBold;
+  font-size: 20px;
+  color: #594e47;
+  letter-spacing: 0.833333px;
+}
+
+#eventContent {
+  letter-spacing: 0.5px;
+  color: #594e47;
+  font-size: 12px;
+  font-family: montserratBold;
+}
+
+#timeline {
+  position: relative;
+  height: 530px;  
+  width: 75px;
+  padding-left: 5px;
+  box-shadow: inset 0px 2px 10px #9A783F;
+  border: 1px solid #D9CCB9;
+  border-radius: 8px;
+}

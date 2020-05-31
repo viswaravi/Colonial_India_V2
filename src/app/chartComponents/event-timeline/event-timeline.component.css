@@ -1,0 +1,13 @@
+.d3-eventTimeline {
+  width: 100%;
+  height: 300px;
+}
+
+.d3-eventTimeline .axis path,
+.d3-eventTimeline .axis line {
+  stroke: #999;
+}
+
+.d3-eventTimeline .axis text {
+  fill: #999;
+}

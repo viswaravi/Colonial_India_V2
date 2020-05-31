@@ -1,0 +1,23 @@
+.highlight{
+    display: inline-block;
+    border: 1px solid #9A783F;
+    padding: 5px;
+    border-radius: 8px;
+    background-color:transparent;
+    margin: 5px;
+    font-family: montserratBold;
+    margin-top: 0px;
+    color: #4B453D;
+    font-size: 12px;
+    user-select: none;
+}
+
+#KeyHighlightsArea{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-shrink: 1;
+    max-width: 450px;
+}

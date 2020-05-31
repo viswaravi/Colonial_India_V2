@@ -1,0 +1,276 @@
+<div id="treasureContainer">
+  <div style="padding-bottom: 10px; border-top: 1px solid #613207;"></div>
+  <div id="headWrapper">
+    <div id="treasureHead">
+      <h1>Looted Treasure</h1>
+      <p>1605 -15 August 1947</p>
+    </div>
+  </div>
+  <div
+    style="
+      padding-bottom: 10px;
+      border-bottom: 1px solid #613207;
+      margin-bottom: 20px;
+    "
+  ></div>
+
+  <div id="lootNavigator">
+    This Section shows how
+    <span
+      (click)="setTreasureName('money')"
+      [ngClass]="{ treasureHighlighted: shouldDisp('money') }"
+      >Money</span
+    >,
+    <span
+      [ngClass]="{ treasureHighlighted: shouldDisp('diamonds') }"
+      (click)="setTreasureName('diamonds')"
+      >Diamonds</span
+    >,<span
+      [ngClass]="{ treasureHighlighted: shouldDisp('textiles') }"
+      (click)="setTreasureName('textiles')"
+      >Textiles</span
+    >
+    etc were taken away from India through
+    <span
+      (click)="setTreasureName('tradingRoutes')"
+      [ngClass]="{ treasureHighlighted: shouldDisp('tradingRoutes') }"
+      >Trading Routes</span
+    >
+    and
+    <span
+      (click)="setTreasureName('railways')"
+      [ngClass]="{ treasureHighlighted: shouldDisp('railways') }"
+      >Railways</span
+    >
+  </div>
+
+  <div id="lootDetailsConatiner">
+    <div id="Money" *ngIf="shouldDisp('money')">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="../../assets/images/Rupee.png"
+          alt="Loading"
+          width="210px"
+          height="210px"
+          style="align-self: center; justify-content: center;"
+        />
+      </div>
+
+      <div id="moneyDetails">
+        <h1>
+          Total: 3,40,63,42,50,00,00,000 INR
+        </h1>
+        <p>$ 45 trillion in todays’ amount</p>
+        <br />
+        <h2
+          style="
+            font-weight: 900;
+            font-size: 14px;
+            font-family: montserratEBold;
+          "
+        >
+          For example
+        </h2>
+
+        <div class="amountDetails">
+          <p>
+            Clive on his first return to england
+          </p>
+          <p class="pound">2,16,40,247.76 INR</p>
+        </div>
+
+        <div class="amountDetails">
+          <p>
+            After two yearClive came back and looted
+          </p>
+          <p class="pound">36991876.51 INR</p>
+        </div>
+
+        <div class="amountDetails">
+          <p>
+            The British extracted from India each year
+          </p>
+          <p class="pound">1664634443.04 INR</p>
+        </div>
+
+        <div class="amountDetails">
+          <p>
+            Warren Hastings accepted substantial personal bribes
+          </p>
+          <p class="pound">92,45,769.68 INR</p>
+        </div>
+
+        <div class="amountDetails">
+          <p>
+            India had exported an average of worth of goods to <br />Britain
+            each year for thirty years
+          </p>
+          <p class="pound">1,20,20,17,440.00 INR</p>
+        </div>
+
+        <div class="amountDetails">
+          <p>
+            The annual drain of £3,000,000 on British India has <br />
+            amounted in thirty years
+          </p>
+          <p class="pound">66933513080.19 INR</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="Diamonds" *ngIf="shouldDisp('diamonds')">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="../../assets/images/Diamonds.PNG"
+          alt="Loading"
+          width="300px"
+          height="318px"
+          style="
+            align-self: center;
+            justify-content: center;
+            padding-top: 20px;
+          "
+        />
+      </div>
+
+      <div id="diamondDetails">
+        <h1>
+          Total: 7 diamonds looted
+        </h1>
+        <h6>For example</h6>
+
+        <p>
+          Thomas Pitt, Governor of Madras, acquires the Pitt Diamond (for
+          £24,000, it was said, itself a considerable sum beyond <br />
+          the reach of 99 per cent of Englishmen) a diamond said to be ‘the
+          finest jewel in the world’, later sold to the Regent of <br />
+          France, the Duc d’Orléans, for £135,000, 6 times for what he brought.
+          Pitt shipped the 400–carat gem to Britain, <br />
+          referring to it in his letters as ‘my greatest concern’ and ‘my all’.
+        </p>
+      </div>
+    </div>
+
+    <div id="Textiles" *ngIf="shouldDisp('textiles')">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="../../assets/images/Kalamkari Textile.png"
+          alt="Loading"
+          width="300px"
+          height="318px"
+          style="align-self: center; justify-content: center;"
+        />
+      </div>
+
+      <div id="textileDetails">
+        <h1>
+          Kalamkari
+        </h1>
+        <h6>Example from the book</h6>
+
+        <p>
+          <span>1600-1757:</span> While the British were just traders and not
+          rulers, their demand is estimated to have raised Bengal’s textile
+          <br />
+          and silk production by as much as 33 per cent.
+        </p>
+
+        <p>
+          <span> 1613:</span> The British destruction of textile competition
+          from India led to the first great deindustrialization of the modern
+          <br />
+          world. Indian handloom fabrics were much in demand in England; it was
+          no accident that the Company established its <br />
+          first ‘factory’ in the southern port town of Masulipatnam, famous for
+          its Kalamkari textiles.
+        </p>
+      </div>
+    </div>
+
+    <div id="TradingRoutes" *ngIf="shouldDisp('tradingRoutes')">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="../../assets/images/Trading routes.PNG"
+          alt="Loading"
+          width="517px"
+          height="440px"
+          style="align-self: center; justify-content: center;"
+        />
+      </div>
+      <div id="tradingRouteDetails">
+        <h1>
+          Trading Routes
+        </h1>
+
+        <p>
+          1800s trading routes during british rule, these routes were used to
+          export and import goods(textile, silk, cotton, jute, <br />
+          spices, tea, opium etc), army, labour from India to other places in
+          the world.
+        </p>
+      </div>
+    </div>
+
+    <div id="Railways" *ngIf="shouldDisp('railways')">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <img
+          src="../../assets/images/Railway.PNG"
+          alt="Loading"
+          width="517px"
+          height="440px"
+          style="align-self: center; justify-content: center;"
+        />
+      </div>
+      <div id="railwayDetails">
+        <h1>
+          Railways
+        </h1>
+
+        <p>
+          The railway development during British period was to connecting major
+          cities where industries were lead. It was not <br />
+          done for the benefit of Indian citizens. The first class was for
+          elites of Britain, second class also for Bitishers who can <br />
+          not afford the first class coach and then third and fourth class
+          coaches for indians with wooden benches and no <br />
+          provision for washrooms.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

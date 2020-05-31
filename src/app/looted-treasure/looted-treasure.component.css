@@ -1,0 +1,215 @@
+#treasureContainer {
+  padding: 40px;
+  padding-top: 5px;
+  background-color: #EADCC7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+#headWrapper{
+  border-top: 2px solid #613207;
+  border-bottom: 2px solid #613207;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#treasureHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-top: 4px solid #613207;
+  border-bottom: 4px solid #613207;
+  font-size: 30px;
+  font-family: merriweatherBold;
+  letter-spacing: 0.6px;
+}
+
+#treasureHead p {
+  padding-top: 20px;
+  padding-left: 10px;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  color: #594e47;
+}
+
+#lootNavigator {
+  letter-spacing: 0.32px;
+  color: #594e47;
+  font-family: montserrat;
+}
+
+#lootNavigator span {
+  padding: 10px;
+  border: 1px solid #d9ccb9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-family: montserratBold;
+  border: 1px solid #613207;
+  letter-spacing: 0.4px;
+}
+
+.treasureHighlighted {
+  background-color: #613207;
+  color: white;
+}
+
+#Money {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#moneyDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: montserrat;
+  color: #594e47;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+#moneyDetails p{
+  color: #594E47;
+  font-family: montserratBold;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+
+#moneyDetails h1 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 42px;
+}
+
+.amountDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: montserratBold;
+  font-size: 12px;
+  text-align: left;
+}
+
+.pound {
+  font-family: montserratEBold;
+  font-size: 14px;
+  letter-spacing: 0.583333px;
+}
+
+#diamondDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: montserrat;
+  color: #594e47;
+  letter-spacing: 0.5px;
+  min-height: 350px;
+}
+
+#diamondDetails h1 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 42px;
+  text-align: center;
+  letter-spacing: 1.75px;
+}
+
+#diamondDetails h6 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.583333px;
+}
+
+#diamondDetails p {
+  font-family: montserratBold;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: auto;
+}
+
+#textileDetails {
+  color: #594e47;
+  min-height: 350px;
+}
+
+#textileDetails h1 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 42px;
+  text-align: center;
+  letter-spacing: 1.75px;
+}
+
+#textileDetails h6 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.583333px;
+}
+
+#textileDetails p {
+  font-family: montserratBold;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: auto;
+}
+#textileDetails p span {
+  font-family: montserratEBold;
+  font-weight: 900;
+}
+
+#tradingRouteDetails {
+  color: #594e47;
+  min-height: 350px;
+}
+#tradingRouteDetails h1 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 42px;
+  text-align: center;
+  letter-spacing: 1.75px;
+}
+
+#tradingRouteDetails p {
+  font-family: montserratEBold;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: auto;
+}
+
+#railwayDetails {
+  color: #594e47;
+  min-height: 350px;  
+}
+#railwayDetails h1 {
+  font-family: montserratEBold;
+  font-weight: 900;
+  font-size: 42px;
+  text-align: center;
+  letter-spacing: 1.75px;
+}
+
+#railwayDetails p {
+  font-family: montserratEBold;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin: auto;
+}

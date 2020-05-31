@@ -1,0 +1,19 @@
+#humanResourceConatiner {
+  padding: 50px;
+  background-color: #d9ccb9;    
+}
+
+#topicConatiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#topicConatiner p {
+  padding: 10px;
+  border: 1px solid #D9CCB9;
+  margin-right: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+}

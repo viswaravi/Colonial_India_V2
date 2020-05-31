@@ -1,0 +1,101 @@
+#dateSpace,
+#imgSpace {
+  background-color: #d9ccb9;
+}
+
+
+#newsHeaderSection{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #d9ccb9;
+  border-bottom: 2px solid #9A783F;;
+}
+
+#headImageContainer,
+#dateSpace,
+#imgSpace {
+  padding: 0;
+}
+
+
+#imgSpace {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 40px;
+  padding-top: 20px;
+}
+
+#dateSpace {
+  padding: 20px;
+}
+
+#dateText {
+  font-family: merriweatherBold;
+  padding-left:35px;
+  color: #594E47;
+}
+
+#headImageContainer {
+  max-height: 20%;
+}
+
+#headImage {
+  height: 100%;
+  width: inherit;
+}
+
+#imgName{
+  font-family: merriweatherBold;
+  color: #594E47;
+}
+
+
+img {
+  width: 100px;
+}
+
+
+#aboutPaperContainer {
+  border-top: 1px solid #baad99;
+  background-color: #d9ccb9;
+  font-size: 10px;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#aboutPaperText {
+  font-family: merriweatherBold;
+  align-self: center;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+
+#learnMoreContainer{
+  font-family: MontserratBold;
+  background-color: #2B4460;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  height: 80px;
+  letter-spacing: 2.66667px;
+}
+
+
+#learnMoreContainer  a{
+  color: #ffffff;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+
+#learnMoreText{
+  color:#D9CCB9;
+  letter-spacing: 2.66667px;
+}
+

@@ -1,0 +1,52 @@
+<div id="eventsContainer">
+  <div class="row">
+    <div class="col-4" id="eventHead">
+      People, places & <br />
+      historical events
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-2" id="eventDate">
+          <p>7 June 2020</p>
+          <h5>India</h5>
+        </div>
+        <div class="col-10">
+          <p id="eventSubHead">
+            What India was left with? An aftermessy life…
+          </p>
+          <p id="eventContent">
+            It all began with the East India Company, incorporated by royal
+            charter from Her Majesty Queen Elizabeth I in 1600 to <br />
+            trade in silk and spices, and other profitable Indian commodities.
+            Ended with partition of India in different states as <br />
+            India , Pakistan, Bangladesh. This part of visualisation shows a
+            chronological order of how famous people (Britishers & <br />
+            Indian) of British Raj were part of the rule? How the whole world
+            was part of the rule? And how stratigically the events <br />
+            took place which lead to this decline?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <br />
+
+  <div class="row">
+    <div class="col-2">
+      <p id="yearsText">Years</p>
+      <div id="timeline">
+        <app-event-timeline
+          (changeTime)="updateContent($event)"
+        ></app-event-timeline>
+      </div>
+    </div>
+    <div class="col-3">
+      <app-key-highlights [showHighlight]="keyHighlights"></app-key-highlights>
+    </div>
+    <div class="col-7">
+      <app-peoples-map (INpersonHighlight)="updateHighlightsIN($event)" (OUTpersonHighlight)="updateHighlightsOUT($event)" [peopleImages]="peopleImages"></app-peoples-map>
+    </div>
+  </div>
+</div>
