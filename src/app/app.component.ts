@@ -15,6 +15,7 @@ export class AppComponent {
 
   title = 'ColonialIndiav2';
   isSticky = false;
+  dispComponent = 'intro';
 
   @ViewChild('navBar') navBar: ElementRef;
 
@@ -26,15 +27,36 @@ export class AppComponent {
   @ViewChild('events') events: ElementRef;
 
 
+  isDisp(cName) {
+    if (cName == this.dispComponent) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
+
+  @HostListener('window:scroll',   ['$event']) onScrollEvent($event) {
     // console.log(event);
-   // console.log(window.pageYOffset);
-  
+    // console.log(window.pageYOffset);
+
     if (window.pageYOffset > this.navBar.nativeElement.offsetTop) {
       this.isSticky = true;
     } else {
       this.isSticky = false;
+    }
+
+
+    console.log(window.pageYOffset);
+
+    if(window.pageYOffset<1173){
+      this.dispComponent ='intro';
+    }
+    if(window.pageYOffset>910 && window.pageYOffset<1790){
+      this.dispComponent ='lootedTreasure';
+    }
+    if(window.pageYOffset>1790 && window.pageYOffset<2740){
+      this.dispComponent ='impacts';
     }
 
   }
@@ -45,6 +67,7 @@ export class AppComponent {
       scrollOffset: 50,
       scrollTarget: id,
     });
+
   }
 
 }

@@ -1,11 +1,24 @@
 <app-head></app-head>
 
 <div id="navBar" #navBar [ngClass]="{ sticky: isSticky }">
-  <a class="navTopic" (click)="scrollTo('#intro')">Introduction</a>
-  <a class="navTopic" (click)="scrollTo('#lootedTreasure')"
+  <a
+    class="navTopic"
+    (click)="scrollTo('#intro')"
+    [ngClass]="{ active: isDisp('intro') }"
+    >Introduction</a
+  >
+  <a
+    class="navTopic"
+    (click)="scrollTo('#lootedTreasure')"
+    [ngClass]="{ active: isDisp('lootedTreasure') }"
     >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
   >
-  <a class="navTopic" (click)="scrollTo('#impacts')">Impact of British Rule</a>
+  <a
+    class="navTopic"
+    (click)="scrollTo('#impacts')"
+    [ngClass]="{ active: isDisp('impacts') }"
+    >Impact of British Rule</a
+  >
   <a class="navTopic" (click)="scrollTo('#lootedResource')"
     >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
   >

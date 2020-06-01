@@ -12,6 +12,7 @@ export class EconomyPopulationComponent implements OnInit {
 
   @ViewChild('chart', { static: false }) private chartContainer: ElementRef;
   @Input() private currentYear: number;
+  @Input() private chartState: any;
   margin: any = { top: 0, bottom: 50, left: 50, right: 20 };
   chart: any;
   width: number;
@@ -26,6 +27,15 @@ export class EconomyPopulationComponent implements OnInit {
   columns = [];
   values = [];
   dataLines: {};
+  lines: any;
+  localGraphState = 'empty';
+  resumeCount = 0;
+
+  // Pause and Resume Animation
+  offsets = [];
+  totalLength = [];
+  durationvalue = 17000;
+
 
   dataColumns = ['GDP Growth Percent',
     'India GDP world contribution',
@@ -45,10 +55,33 @@ export class EconomyPopulationComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.currentYear) {
-      console.log('Changed', this.xValues[this.currentYear]);
-      this.updateCustomChart();
+    console.log('Changed State', this.chartState);
+    console.log('Changed Year ', this.currentYear);
+
+    if (this.currentYear == 0) {
+      this.clearChart();
+      console.log('RESET GRAPH');
+      this.localGraphState = 'empty';
+      this.resumeCount = 0;
+      // this.createCustomChart();
     }
+
+    if (this.chartState == 'pause') {
+      this.pauseChart();
+      this.localGraphState = 'pause';
+      console.log('PAUSE GRAPH');
+    } else if (this.chartState == 'play') {
+      if (this.localGraphState == 'empty') {
+        this.playChart();
+        this.localGraphState = 'play';
+        console.log('PLAY GRAPH');
+      }
+      if (this.localGraphState == 'pause' && (this.currentYear + 1) % 9 != 0) {
+        this.resumeChart();
+        console.log('RESUME GRAPH');
+      }
+    }
+
   }
 
   ngAfterViewInit() {
@@ -198,19 +231,15 @@ export class EconomyPopulationComponent implements OnInit {
     // Add SVG Lines for the Data
     this.dataColumns.map(col => {
       svg.append('path')
-        .attr('class', 'gridLine')
+        .attr('class', 'dataLine')
         .attr('d', line(this.dataLines[col]))
         .attr('transform', `translate(${this.margin.left}, ${-this.margin.bottom - 5})`)
         .attr("stroke", this.getStrokeColor(col))
         .attr("stroke-width", 2)
-        .attr('opacity',1)
-        .attr("fill", "none");
+        .attr('opacity', 1)
+        .attr("fill", "none")
+        ;
     });
-
-
-
-
-
   }
 
 
@@ -227,7 +256,7 @@ export class EconomyPopulationComponent implements OnInit {
     }
   }
 
-  updateCustomChart() {
+  playChart() {
     /*
      let circles = d3.selectAll('.pointCircle').filter((d, i) => {
          console.log(d);
@@ -236,6 +265,92 @@ export class EconomyPopulationComponent implements OnInit {
      console.log('Circles', circles);
      //.transition().duration(500).attr("fill", d => {this.getStrokeColor(d)});
    */
+
+    console.log('Chart Play');
+
+    this.lines = d3.selectAll('.dataLine');
+
+    this.totalLength = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
+
+    // console.log(totalLength);
+
+    let dValue = this.durationvalue;
+
+    for (let i = 0; i < 3; i++) {
+      d3.select(this.lines['_groups'][0][i])
+        .attr("stroke-dasharray", this.totalLength[i])
+        .attr("stroke-dashoffset", this.totalLength[i])
+        .transition()
+        .duration(dValue)
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0);
+    }
+
+  }
+
+  pauseChart() {
+
+    console.log('Chart Pause');
+
+    this.lines = d3.selectAll('.dataLine');
+
+    this.offsets = [d3.select(this.lines['_groups'][0][0]).attr('stroke-dashoffset'), d3.select(this.lines['_groups'][0][1]).attr('stroke-dashoffset'),
+    d3.select(this.lines['_groups'][0][2]).attr('stroke-dashoffset')];
+
+    // console.log('Line Offsets :', this.offsets);
+
+    for (let i = 0; i < 3; i++) {
+      d3.select(this.lines['_groups'][0][i])
+        .transition()
+        .duration(0);
+    }
+  }
+
+  resumeChart() {
+
+    this.resumeCount = this.resumeCount + 1;
+    //redraw from current Duration,DashOffset and Length
+    for (let i = 0; i < 3; i++) {
+      // Caluculate Remaining Time from offsetvalue and Total Durartion
+      let offsetCompleted = this.totalLength[i] - this.offsets[i];
+      let durationPerMS = this.totalLength[i] / this.durationvalue;
+      let offsetDurationRemaining = this.durationvalue - (offsetCompleted * durationPerMS);
+      d3.select(this.lines['_groups'][0][i])
+        .attr("stroke-dashoffset", this.offsets[i])
+        .transition()
+        .duration(offsetDurationRemaining - (1500 * this.resumeCount))
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0);
+    }
+
+
+  }
+
+  clearChart() {
+    // clear Chart 
+    // On Index Reset to 0
+    this.lines = d3.selectAll('.dataLine');
+    this.resumeCount = 0;
+
+    let totalLength = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
+
+    // console.log(totalLength);
+
+    let durationvalue = 17000;
+
+    d3.select(this.lines['_groups'][0][0])
+      .attr("stroke-dasharray", this.totalLength[0])
+      .attr("stroke-dashoffset", this.totalLength[0]);
+
+
+    d3.select(this.lines['_groups'][0][1])
+      .attr("stroke-dasharray", this.totalLength[1])
+      .attr("stroke-dashoffset", this.totalLength[1]);
+
+    d3.select(this.lines['_groups'][0][2])
+      .attr("stroke-dasharray", this.totalLength[2])
+      .attr("stroke-dashoffset", this.totalLength[2]);
+
   }
 
 }

@@ -40,6 +40,13 @@
               width="45"
               style="cursor: pointer;"
           /></span>
+          <span *ngIf="graphState == 'end'"
+            ><img
+              src="../../assets/images/play.png"
+              height="45"
+              width="45"
+              style="cursor: pointer;"
+          /></span>
           <span *ngIf="graphState == 'play'"
             ><img
               src="../../assets/images/pause.png"
@@ -66,14 +73,19 @@
       <div id="graphEconomy">
         <app-economy-population
           [currentYear]="yearIndex"
+          [chartState]="graphState"
         ></app-economy-population>
-        <img src="../../assets/images/legendImpact.png" width="450" height="60">
+        <img
+          src="../../assets/images/legendImpact.png"
+          width="450"
+          height="60"
+        />
       </div>
     </div>
     <div class="col-4" id="mapData">
       <p class="impactGraphHead">Rule on India by East India Company</p>
       <img src="{{ yearImage }}" alt="loading" width="420" height="534" />
-      <img src="../../assets/images/legendMap.png" width="380" height="60" /> 
+      <img src="../../assets/images/legendMap.png" width="380" height="60" />
     </div>
   </div>
 </div>

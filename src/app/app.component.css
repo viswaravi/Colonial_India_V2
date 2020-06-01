@@ -40,6 +40,13 @@
   box-shadow: none;
 }
 
+.active {
+  background-color: #2b4460;
+  color: #d9ccb9;
+  box-shadow: none;
+}
+
+
 .sticky {
   position: fixed;
   top: 0;

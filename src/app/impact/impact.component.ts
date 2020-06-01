@@ -92,35 +92,38 @@ export class ImpactComponent implements OnInit {
     }
   */
   playInterval() {
+
+    let prevstate = this.graphState;
     this.graphState = 'play';
-    this.intervalTimer = interval(1000);
+
+    this.intervalTimer = interval(2000);
     this.intervalFunction = this.intervalTimer.subscribe(() => {
-      this.yearIndex = (this.yearIndex + 1) % this.limit;
-      this.updateyearImage();
-      console.log('Year :', this.years[this.yearIndex]);
+
+      if ((this.yearIndex + 1) % this.limit == 0 && prevstate != 'end') {
+        this.graphState = 'end';
+        this.pauseInterval();
+      } else {
+        this.yearIndex = (this.yearIndex + 1) % this.limit;
+        this.updateyearImage();
+        console.log('Year :', this.years[this.yearIndex]);
+      }
     });
   }
 
   pauseInterval() {
-    this.graphState = 'pause';
     this.intervalFunction.unsubscribe();
   }
-
-
 
 
   toggleState() {
     if (this.graphState == 'pause') {
       this.playInterval();
     } else if (this.graphState == 'play') {
+      this.graphState = 'pause';
       this.pauseInterval();
-    }
-  }
-
-  reset() {
-    this.graphState = 'pause';
-    this.yearIndex = 0;
-    clearInterval(this.timer);
+    }else if (this.graphState == 'end') {
+      this.playInterval();
+      }
   }
 
   isHighlight(year) {
