@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
-import * as data from '../../../assets/data/key_Highlights.json';
+import * as data from '../../../assets/data/Key_Highlights_Ordered.json';
 
 @Component({
   selector: 'app-key-highlights',
@@ -15,7 +15,7 @@ export class KeyHighlightsComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.showHighlight) {
-      console.log('Highlihts Changed', this.showHighlight, this.showHighlight.length, this.keyHighlights.length);
+     // console.log('Highlihts Changed', this.showHighlight, this.showHighlight.length, this.keyHighlights.length);
     }
   }
 
@@ -23,7 +23,7 @@ export class KeyHighlightsComponent implements OnInit {
     data['default'].forEach(d => {
       this.keyHighlights.push(d['KeyHighlight']);
     });
-    console.log(this.keyHighlights);
+  //  console.log(this.keyHighlights);
   }
 
   getStyle(key) {

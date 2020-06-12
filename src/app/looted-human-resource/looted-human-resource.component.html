@@ -4,8 +4,308 @@
   </div>
 
   <div id="topicConatiner">
-    <p>Army deployment</p>
-    <p>People Died</p>
-    <p>Labour Migration</p>
+    <p
+      [ngClass]="{ active: isActiveTopic('ARMY') }"
+      (click)="setActiveTopic('ARMY')"
+    >
+      Army deployment
+    </p>
+    <p
+      [ngClass]="{ active: isActiveTopic('LABOUR') }"
+      (click)="setActiveTopic('LABOUR')"
+    >
+      Labour Migration
+    </p>
+    <p
+      [ngClass]="{ active: isActiveTopic('PEOPLE') }"
+      (click)="setActiveTopic('PEOPLE')"
+    >
+      People Died
+    </p>
+  </div>
+  <!--*ngIf="isActiveTopic('ARMY')"-->
+  <div [ngClass]="{ hide: !isActiveTopic('ARMY') }">
+    <div class="row">
+      <div id="armyPlaceContainer" class="col-2">
+        <div
+          *ngFor="let place of armyPlaces"
+          class="place"
+          (click)="setActiveArmyContent(place)"
+          [ngClass]="{ placeHighlight: isActiveArmyPlace(place) }"
+        >
+          {{ place }}
+        </div>
+      </div>
+
+      <div class="col-5" id="armyChartContainer">
+        <div></div>
+        <div *ngIf="activeArmyPlace != 'others'">
+          <app-army-chart
+            [count]="activeArmyContent['count']"
+            [diedCount]="diedCount"
+          ></app-army-chart>
+          <p class="troopInfo">
+            {{ activeArmyContent["text"] }}
+          </p>
+          <p id="armyIconInfo">
+            <img
+              width="40"
+              height="40"
+              src="../../assets/images/SoldierAlive.png"
+            />
+            = 4500 soldiers troop
+          </p>
+        </div>
+
+        <div *ngIf="activeArmyPlace == 'others'" id="otherArmyContainer">
+          <div id="othersHead">
+            <div id="armySoldiersRow">
+              <img
+                src="../../assets/images/SoldierAlive.png"
+                width="70"
+                height="60"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+              <img
+                src="../../assets/images/SoldiersDied.png"
+                width="57"
+                height="55"
+              />
+            </div>
+            6 out of 7 soldiers died
+          </div>
+
+          <p>other places of deployment</p>
+
+          <div id="othersPlaceNameContainer">
+            <div class="otherPlaceNameRow">
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Malta')"
+              >
+                Malta
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Malacca')"
+              >
+                Malacca
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Malaya')"
+              >
+                Malaya
+              </div>
+            </div>
+
+            <div class="otherPlaceNameRow">
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Burma')"
+              >
+                Burma
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Sudan')"
+              >
+                Sudan
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Penang')"
+              >
+                Penang
+              </div>
+            </div>
+            <div class="otherPlaceNameRow">
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Ethiopia')"
+              >
+                Ethiopia
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Mauritius')"
+              >
+                Mauritius
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Singapore')"
+              >
+                Singapore
+              </div>
+            </div>
+
+            <div class="otherPlaceNameRowM">
+              <div
+                class="othersPlaceName"
+                style="margin-right: 90px;"
+                (click)="setActiveArmyCountry('Somaliland')"
+              >
+                Somaliland
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('East Africa')"
+              >
+                East Africa
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <app-army-world-highlights
+          [countriesToHighlight]="activeArmyCountries"
+        ></app-army-world-highlights>
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="{ hide: !isActiveTopic('LABOUR') }">
+    <div class="row">
+      <div id="armyPlaceContainer" class="col-2">
+        <div
+          *ngFor="let place of labourPlaces"
+          class="place"
+          (click)="setActiveLabourContent(place)"
+          [ngClass]="{ placeHighlight: isActiveLabourPlace(place) }"
+        >
+          {{ place }} <br />
+          {{ getPeopleMigratedYear(place) }}
+        </div>
+      </div>
+
+      <div class="col-5" id="armyChartContainer">
+        <div></div>
+        <div *ngIf="activeLabourPlace != 'others'">
+          <app-labour-chart
+            [count]="activeLabourContent['count']"
+          ></app-labour-chart>
+          <p class="troopInfo">
+            {{ activeArmyContent["text"] }}
+          </p>
+          <p id="armyIconInfo">
+            <img width="60" height="60" src="../../assets/images/labour.png" />
+            = 23000 Labourers
+          </p>
+        </div>
+
+        <div *ngIf="activeLabourPlace == 'others'" id="otherArmyContainer">
+          <p>other places of Migration of Labourers</p>
+          <div id="othersPlaceNameContainer">
+            <div class="otherPlaceNameRow">
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Singapore')"
+              >
+                Singapore
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('South Africa')"
+              >
+                South Africa
+              </div>
+            </div>
+
+            <div class="otherPlaceNameRow">
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Caribbean')"
+              >
+                Caribean Islands of St. Croix
+              </div>
+              <div
+                class="othersPlaceName"
+                (click)="setActiveArmyCountry('Fiji')"
+              >
+                Fiji and Trinidad
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <app-labour-world-highlights
+          [countriesToHighlight]="activeLabourCountries"
+        ></app-labour-world-highlights>
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="{ hide: !isActiveTopic('PEOPLE') }">
+    <div class="row">
+      <div id="peoplePlaceContainer" class="col-2">
+        <div
+          *ngFor="let place of peoplePlaces"
+          class="place"
+          (click)="setActivePeopleContent(place)"
+          [ngClass]="{ placeHighlight: isActivePeoplePlace(place) }"
+        >
+          {{ place }} <br />
+          {{ getPeopleDiedYear(place) }}
+        </div>
+      </div>
+
+      <div class="col-5" id="armyChartContainer">
+        <div></div>
+        <div *ngIf="activePeoplePlace != 'others'">
+          <app-people-chart
+            [count]="activePeopleContent['count']"
+          ></app-people-chart>
+          <p class="troopInfo">
+            {{ activePeopleContent["text"] }}
+          </p>
+          <p id="armyIconInfo">
+            <img width="60" height="60" src="../../assets/images/labour.png" />
+            = 0 People
+          </p>
+        </div>
+      </div>
+
+      <div class="col-5">
+        <app-people-india-highlights
+          [statesToHighlight]="activePeoplePlace"
+        ></app-people-india-highlights>
+      </div>
+    </div>
   </div>
 </div>
+<!--        <div
+              *ngFor="let oplace of activeArmyContent['places']"
+              class="othersPlaceName"
+            >
+              {{ oplace }}
+            </div>
+  -->

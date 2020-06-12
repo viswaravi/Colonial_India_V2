@@ -25,7 +25,8 @@
       [ngClass]="{ treasureHighlighted: shouldDisp('diamonds') }"
       (click)="setTreasureName('diamonds')"
       >Diamonds</span
-    >,<span
+    >,
+    <span
       [ngClass]="{ treasureHighlighted: shouldDisp('textiles') }"
       (click)="setTreasureName('textiles')"
       >Textiles</span
@@ -35,17 +36,18 @@
       (click)="setTreasureName('tradingRoutes')"
       [ngClass]="{ treasureHighlighted: shouldDisp('tradingRoutes') }"
       >Trading Routes</span
-    >
-    and
+    >and
     <span
       (click)="setTreasureName('railways')"
       [ngClass]="{ treasureHighlighted: shouldDisp('railways') }"
-      >Railways</span
+    >
+      Railways.</span
     >
   </div>
 
   <div id="lootDetailsConatiner">
     <div id="Money" *ngIf="shouldDisp('money')">
+      <br />
       <div
         style="
           display: flex;
@@ -57,8 +59,8 @@
         <img
           src="../../assets/images/Rupee.png"
           alt="Loading"
-          width="210px"
-          height="210px"
+          width="240px"
+          height="240px"
           style="align-self: center; justify-content: center;"
         />
       </div>
@@ -137,8 +139,8 @@
         <img
           src="../../assets/images/Diamonds.PNG"
           alt="Loading"
-          width="300px"
-          height="318px"
+          width="390px"
+          height="450px"
           style="
             align-self: center;
             justify-content: center;
@@ -174,11 +176,12 @@
           align-items: center;
         "
       >
+        <br />
         <img
           src="../../assets/images/Kalamkari Textile.png"
           alt="Loading"
-          width="300px"
-          height="318px"
+          width="390px"
+          height="450px"
           style="align-self: center; justify-content: center;"
         />
       </div>
@@ -220,8 +223,8 @@
         <img
           src="../../assets/images/Trading routes.PNG"
           alt="Loading"
-          width="517px"
-          height="440px"
+          width="617px"
+          height="540px"
           style="align-self: center; justify-content: center;"
         />
       </div>
@@ -251,8 +254,8 @@
         <img
           src="../../assets/images/Railway.PNG"
           alt="Loading"
-          width="517px"
-          height="440px"
+          width="617px"
+          height="540px"
           style="align-self: center; justify-content: center;"
         />
       </div>

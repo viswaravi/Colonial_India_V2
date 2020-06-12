@@ -47,7 +47,7 @@ export class AppComponent {
     }
 
 
-    console.log(window.pageYOffset);
+ //   console.log(window.pageYOffset);
 
     if(window.pageYOffset<1173){
       this.dispComponent ='intro';

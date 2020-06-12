@@ -112,7 +112,7 @@
   font-family: montserrat;
   color: #594e47;
   letter-spacing: 0.5px;
-  min-height: 350px;
+  min-height: 200px;
 }
 
 #diamondDetails h1 {
@@ -141,7 +141,7 @@
 
 #textileDetails {
   color: #594e47;
-  min-height: 350px;
+  min-height: 200px;
 }
 
 #textileDetails h1 {

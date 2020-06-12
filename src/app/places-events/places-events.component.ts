@@ -14,6 +14,8 @@ export class PlacesEventsComponent implements OnInit {
   peopleImages = [];
   keyHighlights = [];
   backUpKeyHighlights = [];
+  placesToHighlight = [];
+  backUpPlacesToHighlight = [];
 
 
   constructor() { }
@@ -24,7 +26,7 @@ export class PlacesEventsComponent implements OnInit {
     this.getPeople(1600, 1950);
     this.getYearHighlights(1600, 1950);
   }
-  
+
   updateContent(event) {
     this.fromyear = event.fromYear;
     this.toYear = event.toYear;
@@ -34,7 +36,8 @@ export class PlacesEventsComponent implements OnInit {
 
   getPeople(rfy, rty) {
     this.peopleImages = [];
-    console.log('Event Range to Extract People: ', rfy, rty);
+    this.placesToHighlight = [];
+    // console.log('Event Range to Extract People: ', rfy, rty);
     let efy, ety;
     this.highlights.forEach(event => {
       if (event.Years != "") {
@@ -44,16 +47,20 @@ export class PlacesEventsComponent implements OnInit {
           ety = Number(event.Years.split('-')[1]);
           if (((efy >= rfy && ety <= rty) || (efy >= rfy && efy <= rty) || (ety >= rfy && ety <= rty)) && event.People != "") {
             this.addPeoples(event['Person Photo']);
+            this.addPlaces(event['Places']);
           }
         } else if (event.Years.toString().length == 4) {
           // Single Year 
           if (event.Years >= rfy && event.Years < rty && event.People != "") {
             this.addPeoples(event['Person Photo']);
+            this.addPlaces(event['Places']);
           }
         }
       }
     });
     // console.log(this.peopleImages);
+    //console.log('Added Places :', this.placesToHighlight);
+    this.backUpPlacesToHighlight = this.placesToHighlight;
   }
 
   addPeoples(peoples) {
@@ -102,13 +109,14 @@ export class PlacesEventsComponent implements OnInit {
   }
 
   updateHighlightsIN(event) {
-    console.log("Event:", event.id);
+    // console.log("Event:", event.id);
     this.getKeyHighlightsbyID(event.id + '.jpg');
   }
 
 
   getKeyHighlightsbyID(id) {
     this.keyHighlights = [];
+    this.placesToHighlight = [];
     let colNames = ['Key highlight 1', 'Key highlight 2', 'Key highlight 3', 'Key highlight 4', 'Key highlight 5'];
 
     this.highlights.forEach(event => {
@@ -117,6 +125,7 @@ export class PlacesEventsComponent implements OnInit {
         colNames.forEach(colName => {
           if (event[colName] != "" && !this.keyHighlights.includes(event[colName])) {
             this.keyHighlights.push(event[colName]);
+            this.addPlaces(event['Places']);
           }
         });
       }
@@ -124,8 +133,20 @@ export class PlacesEventsComponent implements OnInit {
   }
 
   updateHighlightsOUT(event) {
-    console.log('Event Reverted');
+    // console.log('Event Reverted');
     this.keyHighlights = this.backUpKeyHighlights;
+    this.placesToHighlight = this.backUpPlacesToHighlight;
+  }
+
+
+  addPlaces(places) {
+    let p = places.split(',');
+
+    p.map(place => {
+      if (place != "" && !this.placesToHighlight.includes(place)) {
+        this.placesToHighlight.push(place.trim());
+      }
+    });
   }
 
 }

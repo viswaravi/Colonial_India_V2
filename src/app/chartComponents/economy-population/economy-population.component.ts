@@ -51,16 +51,16 @@ export class EconomyPopulationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(data['default']);
+   // console.log(data['default']);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('Changed State', this.chartState);
-    console.log('Changed Year ', this.currentYear);
+  //  console.log('Changed State', this.chartState);
+  //  console.log('Changed Year ', this.currentYear);
 
     if (this.currentYear == 0) {
       this.clearChart();
-      console.log('RESET GRAPH');
+    //  console.log('RESET GRAPH');
       this.localGraphState = 'empty';
       this.resumeCount = 0;
       // this.createCustomChart();
@@ -69,16 +69,16 @@ export class EconomyPopulationComponent implements OnInit {
     if (this.chartState == 'pause') {
       this.pauseChart();
       this.localGraphState = 'pause';
-      console.log('PAUSE GRAPH');
+   //   console.log('PAUSE GRAPH');
     } else if (this.chartState == 'play') {
       if (this.localGraphState == 'empty') {
         this.playChart();
         this.localGraphState = 'play';
-        console.log('PLAY GRAPH');
+     //   console.log('PLAY GRAPH');
       }
       if (this.localGraphState == 'pause' && (this.currentYear + 1) % 9 != 0) {
         this.resumeChart();
-        console.log('RESUME GRAPH');
+     //   console.log('RESUME GRAPH');
       }
     }
 
@@ -104,8 +104,8 @@ export class EconomyPopulationComponent implements OnInit {
       .attr('width', this.svgWidth)
       .attr('height', this.svgHeight);
 
-    console.log('Height', this.height);
-    console.log('Width', this.width);
+   // console.log('Height', this.height);
+   // console.log('Width', this.width);
 
 
     this.chart = svg.append('g')
@@ -169,7 +169,7 @@ export class EconomyPopulationComponent implements OnInit {
       gridData.push({ x: this.xScale('2020') + 35, y: this.yScale(parseFloat(yValue)) });
     });
 
-    console.log('Grid Data:', gridData);
+  //  console.log('Grid Data:', gridData);
 
     // Add Grid Lines
     for (let i = 0; i <= gridData.length - 2; i = i + 2) {
@@ -207,7 +207,7 @@ export class EconomyPopulationComponent implements OnInit {
         this.dataLines[col].push({ x: this.xScale(dt['Years']) + 10, y: this.yScale(dt[col]) });
       });
     });
-    console.log('DataLines', this.dataLines);
+   // console.log('DataLines', this.dataLines);
 
 
     // Add Circle Points for Line Chart

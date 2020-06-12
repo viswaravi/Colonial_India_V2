@@ -1,6 +1,6 @@
 #humanResourceConatiner {
   padding: 50px;
-  background-color: #d9ccb9;    
+  background-color: #d9ccb9;
 }
 
 #topicConatiner {
@@ -9,11 +9,149 @@
   justify-content: center;
 }
 
-#topicConatiner p {
-  padding: 10px;
-  border: 1px solid #D9CCB9;
+#topicConatiner > p {
+  padding: 9px;
+  border: 1px solid #9a783f;
   margin-right: 10px;
-  border-radius: 8px;
+  font-family: montserrat;
+  border-radius: 10px;
   font-size: 20px;
+  cursor: pointer;
+  color: black;
+  font-weight: 550;
   letter-spacing: 0.4px;
+}
+
+.active,
+#topicConatiner > p:hover {
+  background: #613207;
+  border: 1px solid #eadcc7;
+  color: #eadcc7 !important;
+}
+
+#armyPlaceContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-right: 2px solid #9e9383;
+  padding-right: 0px;
+}
+
+.place {
+  font-size: 16px;
+  font-family: merriweatherBold;
+  letter-spacing: 1px;
+  color: #4b453d;
+  padding: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px #9a783f;
+}
+
+.placeHighlight {
+  background: #2b4460;
+  border: 1px solid #d9ccb9;
+  border-radius: 8px;
+  color: #ccb33d;
+}
+
+#armyChartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#otherArmyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 60px;
+  padding-right: 60px;
+
+  height: 100%;
+  width: 100%;
+
+  font-family: montserrat;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 0.24px;
+  color: #594e47;
+}
+
+.troopInfo {
+  text-align: center;
+  letter-spacing: 0.75px;
+  font-family: montserrat;
+  font-weight: 900;
+  font-size: 14px;
+  color: #4b453d;
+}
+
+#armyIconInfo {
+  text-align: center;
+  letter-spacing: 0.75px;
+  color: #643307;
+  font-family: montserratBold;
+  font-weight: 900;
+}
+
+#armySoldiersRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#othersHead {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.othersPlaceName {
+  font-family: merriweather;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #4b453d;
+  border-bottom: 2px dashed #613207;
+  cursor: pointer;
+}
+
+#othersPlaceNameContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+.otherPlaceNameRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.otherPlaceNameRowM {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+}
+
+.hide{
+  display: none;
+}
+
+#peoplePlaceContainer{
+  padding-right: 10px;
 }

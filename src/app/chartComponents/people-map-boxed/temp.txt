@@ -1,0 +1,66 @@
+
+    this.bubbles.on('mouseover', () => {
+      console.log('Mouse Hover', d3.event);
+      // console.log('Mouse Hover', d3.event.target.cx);
+
+      this.INpersonHighlight.emit({ id: d3.event.target.id });
+
+      this.svg.append('circle')
+        .attr('id', 'temp')
+        .attr('class', 'bubble')
+        .attr('r', 70)
+        .attr('cx', d3.event.target.cx.baseVal.value)
+        .attr('cy', d3.event.target.cy.baseVal.value)
+        .attr('stroke', '#62340F')
+        .attr('stroke-width', 2)
+        .attr('fill', d => 'url(#' + d3.event.target.id + '.jpg)');
+
+
+      /*
+    this.svg.append('rect')
+    .attr('class', 'imgBack')
+    .attr('width', 60)
+    .attr('x', d3.event.target.cx.baseVal.value)
+    .attr('y', d3.event.target.cy.baseVal.value)
+    .attr('height', 535)
+    .attr('rx', 5)
+    .attr('ry', 5)
+    .attr("cursor", "ns-resize")
+    .style('fill', 'white');
+*/
+
+      this.svg.append('text')
+        .attr('id', 'tempText')
+        .attr('x', d3.event.target.cx.baseVal.value)
+        .attr('y', d3.event.target.cy.baseVal.value + 90)
+        .attr('font-family', 'bodoniItalic')
+        .attr('font-colot', 'white')
+        .text(d3.event.target.id);
+
+
+      // this.highlightPersonID = d3.event.target['__data__']['id'];
+      /*
+      let name = '#' + d3.event.target['__data__']['id'].split('.')[0];
+      console.log(name);
+      let elt = d3.select(name);
+      console.log(elt['_groups'][0]);
+      this.bubbles.select(elt['_groups'][0]).raise();
+      */
+      //  this.simulation.restart();
+    });
+    this.bubbles.on('mouseout', () => {
+      this.OUTpersonHighlight.emit({});
+      this.svg.selectAll('#temp').remove();
+      this.svg.selectAll('#tempText').remove();
+      this.highlightPersonID = null;
+      // this.simulation.restart();
+    });
+    /*
+    // labels
+    this.labels = this.elements
+      .append('text')
+      .attr('dy', '.3em')
+      .style('text-anchor', 'middle')
+      .text(d => d['Name'])
+      .style('font-size', 10)
+    */

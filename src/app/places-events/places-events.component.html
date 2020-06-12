@@ -42,11 +42,17 @@
         ></app-event-timeline>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <app-key-highlights [showHighlight]="keyHighlights"></app-key-highlights>
     </div>
-    <div class="col-7">
-      <app-peoples-map (INpersonHighlight)="updateHighlightsIN($event)" (OUTpersonHighlight)="updateHighlightsOUT($event)" [peopleImages]="peopleImages"></app-peoples-map>
+    <div class="col-6" style="display: flex; flex-direction: column;">
+      <app-peoples-map-boxed
+        (INpersonHighlight)="updateHighlightsIN($event)"
+        (OUTpersonHighlight)="updateHighlightsOUT($event)"
+        [peopleImages]="peopleImages"
+      ></app-peoples-map-boxed>
+      <app-world-highlights [placesToHighlight]="placesToHighlight">
+      </app-world-highlights>
     </div>
   </div>
 </div>

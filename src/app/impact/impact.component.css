@@ -13,8 +13,10 @@
 #impactDate {
   display: flex;
   flex-direction: column;
+  text-align: right;
   justify-content: space-evenly;
   padding: 0px;
+  padding-right: 15px;
   border-right: 1px solid #b7ab9b;
   border-bottom: 1px solid #b7ab9b;
   box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138); 

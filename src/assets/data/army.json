@@ -1,0 +1,47 @@
+{
+  "China": {
+    "text": "1860: 11,000 troops sent in to China,whose campaign ended in the capture and control of Peking; 1900- 1901;",
+    "count": 11000
+  },
+  "Tibet": {
+    "text": "1856-1857: 5,787 Indian troops contributed to the Chinese War; 1903",
+    "count": 5787
+  },
+  "Egypt": {
+    "text": "1882: 9,444 troops and over 1,479,000 rupees contributed in the suppression of rebellion",
+    "count": 9444
+  },
+  "France": {
+    "text": "1914: Indian troops rushed to France and Mesopotamia to fight in World War I. More than 1 million Indian soldiers served in World War I as part of the British India Army, and more than 74,000 died in the conflict.",
+    "count": 926000,
+    "died": 74000
+  },
+  "Mesopotamia": {
+    "text": "1914: Indian troops rushed to France and Mesopotamia to fight in World War I. More than 1 million Indian soldiers served in World War I as part of the British India Army, and more than 74,000 died in the conflict.",
+    "count": 926000,
+    "died": 74000
+  },
+  "Europe": {
+    "text": "Nearly 700,000 Indian sepoys fought in Mesopotamia against the Ottoman empire, Germany’s ally, many of them Indian Muslims taking up arms against their co-religionists in defence of the British empire.",
+    "count": 700000
+  },
+  "Germany": {
+    "text": "Nearly 700,000 Indian sepoys fought in Mesopotamia against the Ottoman empire, Germany’s ally, many of them Indian Muslims taking up arms against their co-religionists in defence of the British empire.",
+    "count": 700000
+  },
+  "others": {
+    "places": [
+      "Malta",
+      "Malacca",
+      "Malaya",
+      "Burma",
+      "Sudan",
+      "Penang",
+      "Ethiopia",
+      "Mauritius",
+      "Singapore",
+      "Somaliland",
+      "East Africa"
+    ]
+  }
+}

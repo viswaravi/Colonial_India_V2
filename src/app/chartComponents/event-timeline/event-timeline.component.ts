@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
-import * as d3 from 'd3';
+  import * as d3 from 'd3';
 
 
 @Component({

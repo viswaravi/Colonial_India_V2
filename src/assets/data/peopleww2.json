@@ -1,0 +1,57 @@
+{
+  "overall": {
+    "text": "The fatality figures are horrifying: from 25 million Indians are estimated to have died in famines, including 15 million in the five famines in the second half of the nineteenth century.",
+    "count": 25000000,
+    "year":"1770-1900",
+    "state":"All"
+  },
+  "Kolkata to Trinidad": {
+    "text": "Professor Clare Anderson has established the extent of the horrors: in just one year, 1856-57, and on one route, Kolkata to Trinidad, the percentage of deaths of indentured labour on the transportee ships reached appalling levels: 12.3 per cent of all males, 18.5 per cent of the females, 28 per cent of the boys and 36 per cent of the girls perished, as did a tragic 55 per cent of all infants.",
+    "count": 1500000,
+    "year":"1856-1857",
+    "state":"West Bengal"   
+  },
+  "Allahabad, Kanpur, Delhi, Jhansi": {
+    "text": "During the Revolt of 1857, thousands of mutineers were killed by similar means, as were large numbers of civilians of both sexes. General James George Smith Neill, in Allahabad and Kanpur, was particularly bloodthirsty, as was Sir Hugh Rose in Jhansi, where some 5,000 civilians were massacred. When Delhi was retaken, the savagery was pitiless: in one neighbourhood alone, Kucha Chelan, some 1,400 unarmed citizens were massacred.",
+    "count": 1500,
+    "year":"1857",
+    "state":"Delhi,Uttar Pradesh"
+  },
+  "Orissa": {
+    "text": "At least a million and a half Indians die in the Orissa Famine.",
+    "count": 1500000,
+    "year":"1866",
+    "state":"Orissa"
+  },
+  "Malerkotla": {
+    "text": "In Malerkotla, Punjab, some 65 Namdhari Sikhs were blown to bits from the mouths of cannons;",
+    "count": 65,
+    "year":"1872",
+    "state":"Punjab"
+  },
+  "Influenza": {
+    "text": "Spanish Influenza epidemic kills 12.5 million in India, 21.6 million worldwide",
+    "count": 12500000,
+    "year":"1918",
+    "state":"Delhi"
+  },
+  "Jallianwala Bagh": {
+    "text": "some 10–15,000 people from outlying districts gathered in the city  to celebrate the major religious festival of Baisakhi. They had assembled in an enclosed walled garden, Jallianwala Bagh, a popular spot for public events in Amritsar but accessible only through five narrow passageways.",
+    "count": 15000,
+    "year":"1919",
+    "state":"Punjab"
+  },
+  "Peshawar’s Qissa Khwani Bazaar": {
+    "text": "in Peshawar’s Qissa Khwani Bazaar, 400 Indians were butchered; and innumerable smaller incidents of beatings, floggings, racial abuse and assaults, shootings, hangings and transportation of Indians for a varied list of offences speckle the bloody history of British colonialism.",
+    "count": 400,
+    "year":"1930",
+    "state":"Pakistan",
+    "loc":"34.025917,71.560135"
+  },
+  "Bengal": {
+    "text": "By the time it ended, nearly 4 million Bengalis starved to death in the 1943 famine.",
+    "count": 4000000,
+    "year":"1943",
+    "state":"West Bengal"
+  }
+}

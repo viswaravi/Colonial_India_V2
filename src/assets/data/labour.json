@@ -1,0 +1,40 @@
+{
+  "Penang": {
+    "text": "1796: the first attempt was not successful and 700 convicts were transferred from the penal settlement of the Andamans to Penang",
+    "count": 700,
+    "year": "1796"
+  },
+  "Mauritius": {
+    "text": "1835: Mauritius receives 19,000 migrant indentured labourers from India. Workers continued to be shipped to Mauritius till 1922.",
+    "count": 19000,
+    "year": "1835"
+  },
+  "Mauritius ": {
+    "text": "1838: 25,000 Indians had arrived; a brief ban, brought about by the anti-slavery campaigners, stopped Indian emigration from 1839-42, but this was overturned, and in 1843 officials reported that 30,218 male and 4,307 female indentured immigrants entered Mauritius.The females were considered essential to encourage labourers to remain after the period of their indentured servitude.",
+    "count": 59525,
+    "year": "1838 - 1842"
+  },
+  "Mauritius  ": {
+    "text": "1868: Regulations had increased the share of female migrants to a minimum of forty women for every hundred men.",
+    "count": 40100,
+    "year":"1868"
+  },
+  "Fiji": {
+    "text": "1879: The Leonidas, first emigrant ship to Fiji, adds 498 Indian indenture labourers to the nearly 340,000 already working in other British empire colonies.",
+    "count": 340498,
+    "year":"1879"
+  },
+  "Africa": {
+    "text": "1939: an estimated 5,300,000 people, whom scholars delicately dub ‘unfree migrants’, were carried on British ships, of whom approximately 58 per cent were slaves, mainly from Africa, 36 per cent were indentured labour, mainly from India, and 6 per cent were transported convicts, both from India and other colonies.",
+    "count": 5300000,
+    "year":"1939"
+  },
+  "others": {
+    "places": [
+      "Singapore",
+      "South Africa",
+      "MalaCaribbean island of St. Croix",
+      "Fiji and Trinidad"
+    ]
+  }
+}
