@@ -22,6 +22,7 @@ import { PeopleChartComponent } from './chartComponents/people-chart/people-char
 import { ArmyWorldHighlightsComponent } from './chartComponents/army-world-highlights/army-world-highlights.component';
 import { LabourWorldHighlightsComponent } from './chartComponents/labour-world-highlights/labour-world-highlights.component';
 import { PeopleIndiaHighlightsComponent } from './chartComponents/people-india-highlights/people-india-highlights.component';
+import { InViewportModule } from 'ng-in-viewport';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PeopleIndiaHighlightsComponent } from './chartComponents/people-india-h
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxPageScrollCoreModule.forRoot({duration: 1500})
+    NgxPageScrollCoreModule.forRoot({ duration: 1500 }),
+    InViewportModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -51,7 +51,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.peopleImages) {
       if (this.peopleImages != []) {
-      //  console.log('People Image Data Changed ', this.peopleImages);
+        //  console.log('People Image Data Changed ', this.peopleImages);
         this.updateCustomChart();
       }
     }
@@ -75,7 +75,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
       .attr('class', 'indianPeople')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
-   // console.log(this.width, this.height);
+    // console.log(this.width, this.height);
 
   }
 
@@ -133,7 +133,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
   }
 
   getOffsetX(x) {
-    let n = 50;
+    let n = 100;
     if (x < n) {
       return n;
     }
@@ -144,7 +144,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
   }
 
   getOffsetY(y) {
-    let n = 50;
+    let n = 100;
     if (y < n) {
       return n;
     }
@@ -156,12 +156,24 @@ export class PeoplesMapBoxedComponent implements OnInit {
   }
 
 
+  getFontSize(name) {
+    if (name.length >= 25) {
+      return 7;
+    }
+    if (name.length >= 15) {
+      return 11;
+    } else {
+      return 15;
+    }
+  }
+
+
   updateCustomChart() {
 
     // Remove existing Nodes
     this.nodes = this.createNodes();
 
-  //  console.log('Nodes: ', this.nodes);
+    //  console.log('Nodes: ', this.nodes);
 
     this.svg.selectAll('.bubble').remove();
     this.svg.selectAll('.cImage').remove();
@@ -201,13 +213,13 @@ export class PeoplesMapBoxedComponent implements OnInit {
 
 
     this.bubbles.on('mouseover', () => {
-   //   console.log('Mouse Hover', d3.event);
+      //   console.log('Mouse Hover', d3.event);
       // console.log('Mouse Hover', d3.event.target.cx);
 
       this.INpersonHighlight.emit({ id: d3.event.target.id });
 
       // White Background for Highlight
-      this.svg.append('rect')
+      /*this.svg.append('rect')
         .attr('id', 'tempRect')
         .attr('class', 'imgBack')
         .attr('height', 120)
@@ -216,18 +228,21 @@ export class PeoplesMapBoxedComponent implements OnInit {
         .attr('y', d3.event.target.cy.baseVal.value + this.getOffsetY(d3.event.target.cy.baseVal.value))
         .attr("cursor", "ns-resize")
         .style('fill', 'white');
+      */
 
-      /*
       let x = d3.event.target.cx.baseVal.value - 85 + this.getOffsetX(d3.event.target.cx.baseVal.value);
       let y = d3.event.target.cy.baseVal.value + this.getOffsetY(d3.event.target.cy.baseVal.value);
 
       this.svg.append('path')
-        .attr('d', function (d) {
-          return this.rightRoundedRect(x, y, 170, 120, 10);
+        .attr('d', d => {
+          let p = this.rightRoundedRect(x, y, 170, 120, 10);
+          return p;
         })
+        .attr('id', 'tempRect')
+        .attr('class', 'imgBack')
         .attr("cursor", "ns-resize")
         .style('fill', 'white');
-        */
+
 
       // Circle Image
       this.svg.append('circle')
@@ -240,7 +255,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
         .attr('stroke-width', 2)
         .attr('fill', d => 'url(#' + d3.event.target.id + '.jpg)');
 
-        
+
       // Name on Background
       this.svg.append('text')
         .attr('id', 'tempText')
@@ -249,7 +264,8 @@ export class PeoplesMapBoxedComponent implements OnInit {
         .attr('font-family', 'montserratBold')
         .attr('font-color', 'black')
         .attr('word-wrap', 'break-word')
-        .attr('letter-spacing', 0.4)
+        .attr('letter-spacing', 0.2)
+        .attr('font-size', this.getFontSize(d3.event.target.id))
         .text(d3.event.target.id.split('_').join(' '));
     });
 
@@ -263,8 +279,8 @@ export class PeoplesMapBoxedComponent implements OnInit {
       // this.simulation.restart();
     });
 
-  //  console.log('Bubbles: ', this.bubbles);
-  //  console.log('Labels: ', this.labels);
+    //  console.log('Bubbles: ', this.bubbles);
+    //  console.log('Labels: ', this.labels);
 
   }
 

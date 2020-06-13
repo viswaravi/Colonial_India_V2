@@ -30,9 +30,10 @@ export class LootedHumanResourceComponent implements OnInit {
 
   peoplePlaces = [];
   activePeoplePlace = '';
+  activePeopleState = '';
   activePeopleContent = {};
   peopleImages = [];
-  
+
 
 
   ngOnInit() {
@@ -108,8 +109,8 @@ export class LootedHumanResourceComponent implements OnInit {
   setActiveLabourContent(place) {
     this.activeLabourContent = LabourData['default'][place];
     this.activeLabourPlace = place;
-    
-    console.log(this.activeLabourContent);
+
+ //   console.log(this.activeLabourContent);
 
     this.activeLabourCountries = [place];
   }
@@ -131,8 +132,9 @@ export class LootedHumanResourceComponent implements OnInit {
   // People
   setActivePeopleContent(place) {
     this.activePeopleContent = PeopleData['default'][place];
-    this.activePeoplePlace = PeopleData['default'][place]['state'];
-    console.log(this.activePeopleContent);
+    this.activePeopleState = PeopleData['default'][place]['state'];
+    this.activePeoplePlace = place;
+   // console.log(this.activePeopleContent, this.activePeoplePlace);
   }
 
   isActivePeoplePlace(place) {

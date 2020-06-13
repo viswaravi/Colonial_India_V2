@@ -28,7 +28,6 @@ export class LabourChartComponent implements OnInit {
   imageScale = d3.scaleLinear().domain([0, 5300000]).range([0, 225]);
   imageValues = [];
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -62,7 +61,7 @@ export class LabourChartComponent implements OnInit {
     // radius - 13 diameter - 26, add for spacing
     let ypos = ((NROW - 1 - y) * (this.imgWidth + 1));
 
-   // console.log('YPOS: ', ypos);
+    // console.log('YPOS: ', ypos);
 
     return ypos;
   }
@@ -82,7 +81,7 @@ export class LabourChartComponent implements OnInit {
 
     let xpos = ((rem * (this.imgWidth + 10)));
 
-  //  console.log('XPOS: ', xpos);
+    //  console.log('XPOS: ', xpos);
 
     return xpos;
   }
@@ -173,6 +172,9 @@ export class LabourChartComponent implements OnInit {
       .delay(d => { return d.split('_')[0] * 10; })
       .duration(1000)
       .attr('opacity', 1);
+
+
+
 
   }
 

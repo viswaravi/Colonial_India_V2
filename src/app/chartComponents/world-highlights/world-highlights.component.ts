@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Input, SimpleChanges } from '@angular/core';
 import * as d3 from 'd3';
-import * as data from '../../../assets/data/countries.json';
+import * as data from '../../../assets/data/countriesSmall.json';
 import * as topojson from "topojson-client";
 import * as highlights from '../../../assets/data/Highlights_2.json';
 import * as placesLocations from '../../../assets/data/locations_filled.json';
@@ -128,7 +128,11 @@ export class WorldHighlightsComponent implements OnInit, AfterViewInit {
     let locations = [];
 
     placesLocations['default'].map(locInfo => {
+
       if (this.placesToHighlight.includes(locInfo['Place'])) {
+
+  //      console.log('Places:', locInfo['Place']);
+
         aa = [locInfo['lon'], locInfo['lat']];
         bb = [locInfo['lon'], locInfo['lat']];
 
@@ -161,8 +165,8 @@ export class WorldHighlightsComponent implements OnInit, AfterViewInit {
 
     this.circles.on('mouseover', () => {
 
-    //  console.log(this.countryLocations);
-    //  console.log(d3.event.target);
+      //  console.log(this.countryLocations);
+      //  console.log(d3.event.target);
 
       let x = d3.event.target.cx.baseVal.value;
       let y = d3.event.target.cy.baseVal.value;

@@ -21,7 +21,7 @@ export class ImpactComponent implements OnInit {
   limit = this.years.length;
   graphState = 'pause';
 
-  intervalFunction: any;
+  intervalFunction: any = null;
   intervalTimer: any;
 
 
@@ -66,10 +66,12 @@ export class ImpactComponent implements OnInit {
     }
   }
 
-  showSingleYear(year) {
-    this.graphState = 'pause';
+  gotoYear(year) {
     clearInterval(this.timer);
+    this.graphState = 'goto';
     this.getImageyear(year);
+    this.yearIndex = this.years.indexOf(year);
+    this.pauseInterval();
   }
 
 
@@ -100,18 +102,27 @@ export class ImpactComponent implements OnInit {
     this.intervalFunction = this.intervalTimer.subscribe(() => {
 
       if ((this.yearIndex + 1) % this.limit == 0 && prevstate != 'end') {
+        // Reached Today so Pause and End Animation
         this.graphState = 'end';
         this.pauseInterval();
       } else {
-        this.yearIndex = (this.yearIndex + 1) % this.limit;
-        this.updateyearImage();
-        console.log('Year :', this.years[this.yearIndex]);
+        // Move to Next Year
+        if (prevstate != 'goto') {
+          this.yearIndex = (this.yearIndex + 1) % this.limit;
+          this.updateyearImage();
+          console.log('Year :', this.years[this.yearIndex]);
+        }
+        if (prevstate == 'goto') {
+          prevstate = 'play';
+        }
       }
     });
   }
 
   pauseInterval() {
-    this.intervalFunction.unsubscribe();
+    if (this.intervalFunction != null) {
+      this.intervalFunction.unsubscribe();
+    }
   }
 
 
@@ -121,9 +132,11 @@ export class ImpactComponent implements OnInit {
     } else if (this.graphState == 'play') {
       this.graphState = 'pause';
       this.pauseInterval();
-    }else if (this.graphState == 'end') {
+    } else if (this.graphState == 'end') {
       this.playInterval();
-      }
+    } else if (this.graphState == 'goto') {
+      this.playInterval();
+    }
   }
 
   isHighlight(year) {

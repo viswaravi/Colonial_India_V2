@@ -25,13 +25,16 @@ export class PeopleIndiaHighlightsComponent implements OnInit {
   projection: any;
   pathGenerator: any;
 
+  locations = [[71.560135, 34.025917]];
+
+
   constructor() { }
 
   ngOnInit() {
     this.width = 590;
     this.height = 700;
 
-    this.projection = d3.geoMercator().center([83, 23]).scale(900).translate([this.width / 2, this.height / 2]);
+    this.projection = d3.geoMercator().center([83, 23]).scale(800).translate([this.width / 2, this.height / 2]);
     this.pathGenerator = d3.geoPath().projection(this.projection);
 
   }
@@ -96,13 +99,23 @@ export class PeopleIndiaHighlightsComponent implements OnInit {
       .attr('fill', d => this.getStateColor(d))
       .attr('d', d => this.pathGenerator(d));
 
-    
+
     let sNames = this.statesToHighlight.split(',');
 
-    if(sNames.includes('Pakistan')){
+    if (sNames.includes('Pakistan')) {
+      this.svg.selectAll("circle")
+        .data(this.locations)
+        .enter()
+        .append("circle")
+        .attr('id', 'Pakistan')
+        .attr('class', 'loc')
+        .attr("cx", (d) => { return this.projection(d)[0]; })
+        .attr("cy", (d) => { return this.projection(d)[1]; })
+        .attr("r", "6px")
+        .attr("fill", "#613207");
 
-    }else{
-      
+    } else {
+      this.svg.selectAll('#Pakistan').remove();
     }
 
   }

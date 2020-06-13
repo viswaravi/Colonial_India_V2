@@ -11,7 +11,7 @@ export class EconomyPopulationComponent implements OnInit {
 
 
   @ViewChild('chart', { static: false }) private chartContainer: ElementRef;
-  @Input() private currentYear: number;
+  @Input() private currentYearIndex: number;
   @Input() private chartState: any;
   margin: any = { top: 0, bottom: 50, left: 50, right: 20 };
   chart: any;
@@ -30,6 +30,8 @@ export class EconomyPopulationComponent implements OnInit {
   lines: any;
   localGraphState = 'empty';
   resumeCount = 0;
+  svg: any;
+  line: any;
 
   // Pause and Resume Animation
   offsets = [];
@@ -51,36 +53,52 @@ export class EconomyPopulationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   // console.log(data['default']);
+    // console.log(data['default']);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-  //  console.log('Changed State', this.chartState);
-  //  console.log('Changed Year ', this.currentYear);
+    //  console.log('Changed State', this.chartState);
+    //  console.log('Changed Year ', this.currentYearIndex);
 
-    if (this.currentYear == 0) {
-      this.clearChart();
-    //  console.log('RESET GRAPH');
-      this.localGraphState = 'empty';
-      this.resumeCount = 0;
-      // this.createCustomChart();
+
+    if (this.chartState == 'goto') {
+      console.log('GOTO GRAPH', this.currentYearIndex);
+      this.localGraphState = 'goto';
+      this.gotoChart();
+    } else {
+
+      // To Resume or play from GOTO to other State
+      if (this.localGraphState == 'goto') {
+        this.removeChartLines();
+        this.createChartLines();
+      }
+
+      // If Starting Point Move the Dash Offset 
+      if (this.currentYearIndex == 0) {
+        this.clearChart();
+        console.log('RESET GRAPH');
+        this.localGraphState = 'empty';
+        this.resumeCount = 0;
+      }
+
+      if (this.chartState == 'pause') {
+        this.pauseChart();
+        this.localGraphState = 'pause';
+        console.log('PAUSE GRAPH');
+      } else if (this.chartState == 'play') {
+        if (this.localGraphState == 'empty') {
+          this.playChart();
+          this.localGraphState = 'play';
+          console.log('PLAY GRAPH');
+        }
+        if ((this.localGraphState == 'pause' || this.localGraphState == 'goto') && (this.currentYearIndex + 1) % 9 != 0) {
+          // IF GRAPH IS PAUSED OR CURRENT YEAR NOT AT END, THEN RESUME
+          this.resumeChart();
+          console.log('RESUME GRAPH');
+        }
+      }
     }
 
-    if (this.chartState == 'pause') {
-      this.pauseChart();
-      this.localGraphState = 'pause';
-   //   console.log('PAUSE GRAPH');
-    } else if (this.chartState == 'play') {
-      if (this.localGraphState == 'empty') {
-        this.playChart();
-        this.localGraphState = 'play';
-     //   console.log('PLAY GRAPH');
-      }
-      if (this.localGraphState == 'pause' && (this.currentYear + 1) % 9 != 0) {
-        this.resumeChart();
-     //   console.log('RESUME GRAPH');
-      }
-    }
 
   }
 
@@ -100,21 +118,21 @@ export class EconomyPopulationComponent implements OnInit {
     this.width = this.svgWidth - this.margin.left - this.margin.right;
     this.height = this.svgHeight - this.margin.top - this.margin.bottom;
 
-    let svg = d3.select(element).append('svg')
+    this.svg = d3.select(element).append('svg')
       .attr('width', this.svgWidth)
       .attr('height', this.svgHeight);
 
-   // console.log('Height', this.height);
-   // console.log('Width', this.width);
+    // console.log('Height', this.height);
+    // console.log('Width', this.width);
 
 
-    this.chart = svg.append('g')
+    this.chart = this.svg.append('g')
       .attr('class', 'myCircles')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
 
     // chart plot area
-    this.chart = svg.append('g')
+    this.chart = this.svg.append('g')
       .attr('class', 'lines')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
@@ -131,7 +149,7 @@ export class EconomyPopulationComponent implements OnInit {
 
     // X-Axis Labels
     this.xValues.forEach(xValue => {
-      svg
+      this.svg
         .append('text')
         .attr('class', 'classValueLabel')
         .attr('transform', `translate( ${this.margin.left}, ${this.svgHeight - 10})`)
@@ -144,7 +162,7 @@ export class EconomyPopulationComponent implements OnInit {
 
     // Y-Axis Labels
     this.yValues.forEach(yValue => {
-      svg
+      this.svg
         .append('text')
         .attr('class', 'classValueLabel')
         .attr('transform', `translate(${0}, ${-this.margin.bottom})`)
@@ -157,7 +175,7 @@ export class EconomyPopulationComponent implements OnInit {
 
 
     // Line Builder
-    let line = d3.line()
+    this.line = d3.line()
       .curve(d3.curveLinear)
       .x(function (d: any) { return d.x })
       .y(function (d: any) { return d.y });
@@ -169,13 +187,13 @@ export class EconomyPopulationComponent implements OnInit {
       gridData.push({ x: this.xScale('2020') + 35, y: this.yScale(parseFloat(yValue)) });
     });
 
-  //  console.log('Grid Data:', gridData);
+    //  console.log('Grid Data:', gridData);
 
     // Add Grid Lines
     for (let i = 0; i <= gridData.length - 2; i = i + 2) {
-      svg.append('path')
+      this.svg.append('path')
         .attr('class', 'gridLine')
-        .attr('d', line(gridData.slice(i, i + 2)))
+        .attr('d', this.line(gridData.slice(i, i + 2)))
         .attr('transform', `translate(${this.margin.left}, ${-this.margin.bottom - 5})`)
         .attr("stroke", "#594E47")
         .attr("stroke-width", 1)
@@ -183,9 +201,9 @@ export class EconomyPopulationComponent implements OnInit {
     }
 
     // Add Bottom Grid Line
-    svg.append('path')
+    this.svg.append('path')
       .attr('class', 'bottomGridLine')
-      .attr('d', line(gridData.slice(0, 2)))
+      .attr('d', this.line(gridData.slice(0, 2)))
       .attr('transform', `translate(${this.margin.left}, ${0})`)
       .attr("stroke", '#594E47')
       .attr("stroke-width", 4)
@@ -207,7 +225,7 @@ export class EconomyPopulationComponent implements OnInit {
         this.dataLines[col].push({ x: this.xScale(dt['Years']) + 10, y: this.yScale(dt[col]) });
       });
     });
-   // console.log('DataLines', this.dataLines);
+    // console.log('DataLines', this.dataLines);
 
 
     // Add Circle Points for Line Chart
@@ -230,16 +248,16 @@ export class EconomyPopulationComponent implements OnInit {
 
     // Add SVG Lines for the Data
     this.dataColumns.map(col => {
-      svg.append('path')
+      this.svg.append('path')
         .attr('class', 'dataLine')
-        .attr('d', line(this.dataLines[col]))
+        .attr('d', this.line(this.dataLines[col]))
         .attr('transform', `translate(${this.margin.left}, ${-this.margin.bottom - 5})`)
         .attr("stroke", this.getStrokeColor(col))
         .attr("stroke-width", 2)
         .attr('opacity', 1)
-        .attr("fill", "none")
-        ;
+        .attr("fill", "none");
     });
+
   }
 
 
@@ -265,9 +283,6 @@ export class EconomyPopulationComponent implements OnInit {
      console.log('Circles', circles);
      //.transition().duration(500).attr("fill", d => {this.getStrokeColor(d)});
    */
-
-    console.log('Chart Play');
-
     this.lines = d3.selectAll('.dataLine');
 
     this.totalLength = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
@@ -294,11 +309,15 @@ export class EconomyPopulationComponent implements OnInit {
 
     this.lines = d3.selectAll('.dataLine');
 
-    this.offsets = [d3.select(this.lines['_groups'][0][0]).attr('stroke-dashoffset'), d3.select(this.lines['_groups'][0][1]).attr('stroke-dashoffset'),
-    d3.select(this.lines['_groups'][0][2]).attr('stroke-dashoffset')];
+    // STORE CUURENT POSITION OF ANIMATION
+    if (this.chartState != 'goto') {
+      this.offsets = [d3.select(this.lines['_groups'][0][0]).attr('stroke-dashoffset'), d3.select(this.lines['_groups'][0][1]).attr('stroke-dashoffset'),
+      d3.select(this.lines['_groups'][0][2]).attr('stroke-dashoffset')];
+    }
 
     // console.log('Line Offsets :', this.offsets);
 
+    // PAUSE ANIMATION
     for (let i = 0; i < 3; i++) {
       d3.select(this.lines['_groups'][0][i])
         .transition()
@@ -308,22 +327,38 @@ export class EconomyPopulationComponent implements OnInit {
 
   resumeChart() {
 
+    console.log('chart resume', this.offsets);
+
+    this.lines = d3.selectAll('.dataLine');
+
     this.resumeCount = this.resumeCount + 1;
     //redraw from current Duration,DashOffset and Length
     for (let i = 0; i < 3; i++) {
       // Caluculate Remaining Time from offsetvalue and Total Durartion
       let offsetCompleted = this.totalLength[i] - this.offsets[i];
       let durationPerMS = this.totalLength[i] / this.durationvalue;
+
       let offsetDurationRemaining = this.durationvalue - (offsetCompleted * durationPerMS);
-      d3.select(this.lines['_groups'][0][i])
-        .attr("stroke-dashoffset", this.offsets[i])
-        .transition()
-        .duration(offsetDurationRemaining - (1500 * this.resumeCount))
-        .ease(d3.easeLinear)
-        .attr("stroke-dashoffset", 0);
+
+      if (this.localGraphState == 'goto') {
+        d3.select(this.lines['_groups'][0][i])
+          .attr("stroke-dashoffset", this.totalLength[i] - this.offsets[i])
+          .transition()
+          .duration(offsetDurationRemaining - (1500 * this.resumeCount))
+          .ease(d3.easeLinear)
+          .attr("stroke-dashoffset", 0);
+      } else {
+        d3.select(this.lines['_groups'][0][i])
+          .attr("stroke-dashoffset", this.offsets[i])
+          .transition()
+          .duration(offsetDurationRemaining - (1500 * this.resumeCount))
+          .ease(d3.easeLinear)
+          .attr("stroke-dashoffset", 0);
+
+      }
     }
 
-
+    this.localGraphState = 'play';
   }
 
   clearChart() {
@@ -350,6 +385,100 @@ export class EconomyPopulationComponent implements OnInit {
     d3.select(this.lines['_groups'][0][2])
       .attr("stroke-dasharray", this.totalLength[2])
       .attr("stroke-dashoffset", this.totalLength[2]);
+
+  }
+
+  removeChartLines() {
+    d3.selectAll('.dataLine').remove();
+  }
+
+  createChartLines() {
+
+    if (this.chartState == 'goto') {
+      // Clear Data POints
+      this.dataColumns.map(col => {
+        this.dataLines[col] = [];
+      });
+
+      // Add Data Points upto selected Year
+      data['default'].map((dt, index) => {
+        if (index <= this.currentYearIndex) {
+          this.dataColumns.map(col => {
+            this.dataLines[col].push({ x: this.xScale(dt['Years']) + 10, y: this.yScale(dt[col]) });
+          });
+        }
+      });
+    } else {
+      // Clear Data POints
+      this.dataColumns.map(col => {
+        this.dataLines[col] = [];
+      });
+
+      // Add Data Points upto selected Year
+      data['default'].map((dt, index) => {
+        this.dataColumns.map(col => {
+          this.dataLines[col].push({ x: this.xScale(dt['Years']) + 10, y: this.yScale(dt[col]) });
+        });
+      });
+
+      // Add SVG Lines for the Data
+      this.dataColumns.map((col, i) => {
+        this.svg.append('path')
+          .attr('class', 'dataLine')
+          .attr('d', this.line(this.dataLines[col]))
+          .attr('transform', `translate(${this.margin.left}, ${-this.margin.bottom - 5})`)
+          .attr("stroke", this.getStrokeColor(col))
+          .attr("stroke-width", 2)
+          .attr('opacity', 1)
+          .attr("fill", "none");
+      });
+
+
+      this.lines = d3.selectAll('.dataLine');
+      if (this.totalLength.length == 0) {
+        this.totalLength = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
+      }
+      console.log('TL:', this.totalLength);
+      console.log('OFF:', this.offsets);
+
+      for (let i = 0; i < 3; i++) {
+        d3.select(this.lines['_groups'][0][i])
+          .attr("stroke-dasharray", this.totalLength[i])
+          .attr("stroke-dashoffset", this.totalLength[i] - this.offsets[i]);
+      }
+    }
+
+  }
+
+  gotoChart() {
+
+    this.pauseChart();
+    this.removeChartLines();
+    this.createChartLines();
+
+    // Create Lines
+    // Add SVG Lines for the Data
+    this.dataColumns.map(col => {
+      this.svg.append('path')
+        .attr('class', 'dataLine')
+        .attr('d', this.line(this.dataLines[col]))
+        .attr('transform', `translate(${this.margin.left}, ${-this.margin.bottom - 5})`)
+        .attr("stroke", this.getStrokeColor(col))
+        .attr("stroke-width", 2)
+        .attr('opacity', 1)
+        .attr("fill", "none")
+        ;
+    });
+
+
+    // STORE CUURENT POSITION OF ANIMATION
+    this.lines = d3.selectAll('.dataLine');
+    this.offsets = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
+
+
+
+    console.log('OFF SAVE:', this.offsets);
+
 
   }
 

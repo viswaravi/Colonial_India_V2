@@ -226,13 +226,13 @@
             <div class="otherPlaceNameRow">
               <div
                 class="othersPlaceName"
-                (click)="setActiveArmyCountry('Singapore')"
+                (click)="setActiveLabourCountry('Singapore')"
               >
                 Singapore
               </div>
               <div
                 class="othersPlaceName"
-                (click)="setActiveArmyCountry('South Africa')"
+                (click)="setActiveLabourCountry('South Africa')"
               >
                 South Africa
               </div>
@@ -241,13 +241,15 @@
             <div class="otherPlaceNameRow">
               <div
                 class="othersPlaceName"
-                (click)="setActiveArmyCountry('Caribbean')"
+                (click)="
+                  setActiveLabourCountry('Caribbean island of St. Croix')
+                "
               >
-                Caribean Islands of St. Croix
+                Caribbean Islands of St. Croix
               </div>
               <div
                 class="othersPlaceName"
-                (click)="setActiveArmyCountry('Fiji')"
+                (click)="setActiveLabourCountry('Fiji')"
               >
                 Fiji and Trinidad
               </div>
@@ -296,7 +298,7 @@
 
       <div class="col-5">
         <app-people-india-highlights
-          [statesToHighlight]="activePeoplePlace"
+          [statesToHighlight]="activePeopleState"
         ></app-people-india-highlights>
       </div>
     </div>

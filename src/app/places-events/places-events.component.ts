@@ -109,7 +109,7 @@ export class PlacesEventsComponent implements OnInit {
   }
 
   updateHighlightsIN(event) {
-    // console.log("Event:", event.id);
+   // console.log("Person:", event.id + '.jpg');
     this.getKeyHighlightsbyID(event.id + '.jpg');
   }
 
@@ -130,6 +130,7 @@ export class PlacesEventsComponent implements OnInit {
         });
       }
     });
+  //  console.log('Places for this Person:', this.placesToHighlight);
   }
 
   updateHighlightsOUT(event) {
