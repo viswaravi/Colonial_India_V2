@@ -1,0 +1,76 @@
+<div id="eventsContainer">
+  <div class="row">
+    <div class="col-4" id="eventHead">
+      Rulers and their <br />
+      Contribution
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-2" id="eventDate">
+          <p>7 June 2020</p>
+          <h5>India</h5>
+        </div>
+        <div class="col-10">
+          <p id="eventContent">
+            It all began with the East India Company, incorporated by royal
+            charter from Her Majesty Queen Elizabeth I in 1600 to trade in silk
+            and spices, and other profitable Indian commodities. Ended with
+            partition of India in different states as India , Pakistan,
+            Bangladesh. This part of visualisation shows a chronological order
+            of how famous people (Britishers & Indian) of British Raj were part
+            of the rule? How the whole world was part of the rule? And how
+            stratigically the events took place which lead to this decline?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-2"
+      style="
+        border-right: 2px solid #9e9383;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+      "
+    >
+      <p id="yearsText">Years</p>
+      <div id="timeline">
+        <app-event-timeline
+          (changeTime)="updateContent($event)"
+        ></app-event-timeline>
+      </div>
+    </div>
+    <div class="col-3">
+      <app-rulers
+        [rulersToHighlight]="rulersToHighlight"
+        [rulersImages]="rulerImages"
+        [rulersEvents]="rulerEvents"
+      ></app-rulers>
+    </div>
+    <div class="col-1"></div>
+    <div
+      class="col-6"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+        border-radius: 8px;
+        padding-right: 0px;
+        overflow-y: scroll;
+        height: 600px;
+        padding: 10px;
+        font-family: montserrat;
+      "
+    >
+      <div *ngFor="let ruler of rulersToHighlight">
+        <h4>{{ ruler }}</h4>
+        <div *ngFor="let evt of rulerEvents.get(ruler)">{{ evt }}</div>
+      </div>
+    </div>
+  </div>
+</div>

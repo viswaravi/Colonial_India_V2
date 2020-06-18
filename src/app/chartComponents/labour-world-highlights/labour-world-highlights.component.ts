@@ -56,13 +56,13 @@ export class LabourWorldHighlightsComponent implements OnInit {
   }
 
 
-  projection = d3.geoMercator().scale(80);
+  projection = d3.geoMercator().scale(100);
   pathGenerator = d3.geoPath().projection(this.projection);
 
   createCustomChart() {
     let element = this.chartContainer.nativeElement;
 
-    this.width = 590;
+    this.width = 633;
     this.height = 400;
     this.svg = d3.select(element).append('svg')
       .attr('width', this.width)
@@ -78,7 +78,7 @@ export class LabourWorldHighlightsComponent implements OnInit {
       .data(this.countries['features'])
       .enter()
       .append('path')
-      .attr('transform', `translate(${-150}, ${this.margin.top})`)
+      .attr('transform', `translate(${-165}, ${this.margin.top})`)
       .attr('stroke', 'black')
       .attr('fill', 'white')
       .attr('d', d => this.pathGenerator(d));
@@ -109,7 +109,7 @@ export class LabourWorldHighlightsComponent implements OnInit {
           .attr('class', 'loc')
           .attr("cx", (d) => { return this.projection(d)[0]; })
           .attr("cy", (d) => { return this.projection(d)[1]; })
-          .attr('transform', `translate(${-150}, ${this.margin.top})`)
+          .attr('transform', `translate(${-165}, ${this.margin.top})`)
           .attr("r", "10px")
           .attr("fill", "#613207");
       }
@@ -140,7 +140,7 @@ export class LabourWorldHighlightsComponent implements OnInit {
       .data(this.countries['features'])
       .enter()
       .append('path')
-      .attr('transform', `translate(${-150}, ${this.margin.top})`)
+      .attr('transform', `translate(${-165}, ${this.margin.top})`)
       .attr('stroke', 'black')
       .attr('fill', d => this.getCountryColor(d))
       .attr('d', d => this.pathGenerator(d));

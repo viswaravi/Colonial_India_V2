@@ -1,0 +1,38 @@
+#eventsContainer {
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0px;
+  border-right: 1px solid #b7ab9b;
+  border-bottom: 1px solid #b7ab9b;
+  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138);
+  color: black;
+  font-family: montserratBold;
+  font-size: 12px;
+  margin-bottom: 20px;
+  text-align: right;
+  padding-right: 15px;
+  width: 80%;
+  align-self: right;
+}
+
+.eventsText {
+  text-align: justify;
+  letter-spacing: 0.5px;
+  color: #000000;
+  font-size: 12px;
+  font-family: montserrat;
+  line-height: 20px;
+}
+
+.col-3,
+.col-9 {
+  padding-right: 0px;
+  padding-left: 0px;
+}

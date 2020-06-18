@@ -258,6 +258,24 @@ export class EconomyPopulationComponent implements OnInit {
         .attr("fill", "none");
     });
 
+    // Add Data Point Numbers in Graph
+    data['default'].map(dt => {
+      this.dataColumns.map(col => {
+        // Name on Background
+        this.svg.append('text')
+          .attr('x', this.xScale(dt['Years']) + 10)
+          .attr('y', this.yScale(dt[col]))
+          .attr('font-family', 'montserratBold')
+          .attr('font-color', 'black')
+          .attr('transform', `translate(${this.margin.left+10}, ${-this.margin.bottom - 10})`)
+          .attr('word-wrap', 'break-word')
+          .attr('letter-spacing', 0.2)
+          .attr('font-size', 12)
+          .text(dt[col]);
+      });
+    });
+
+
   }
 
 

@@ -47,7 +47,7 @@ export class AppComponent {
     }
 
 
- //   console.log(window.pageYOffset);
+    console.log(window.pageYOffset);
 
     if(window.pageYOffset<1173){
       this.dispComponent ='intro';
@@ -57,6 +57,19 @@ export class AppComponent {
     }
     if(window.pageYOffset>1790 && window.pageYOffset<2740){
       this.dispComponent ='impacts';
+    }
+    
+    if(window.pageYOffset>1790 && window.pageYOffset<2740){
+      this.dispComponent ='lootedResource';
+    }
+    if(window.pageYOffset>1790 && window.pageYOffset<2740){
+      this.dispComponent ='events';
+    }
+    if(window.pageYOffset>1790 && window.pageYOffset<2740){
+      this.dispComponent ='rulers';
+    }
+    if(window.pageYOffset>1790 && window.pageYOffset<2740){
+      this.dispComponent ='tail';
     }
 
   }

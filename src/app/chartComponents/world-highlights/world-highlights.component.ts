@@ -90,7 +90,7 @@ export class WorldHighlightsComponent implements OnInit, AfterViewInit {
   createCustomChart() {
     let element = this.chartContainer.nativeElement;
 
-    this.width = 800;
+    this.width = 766;
     this.height = 400;
     this.svg = d3.select(element).append('svg')
       .attr('width', this.width)

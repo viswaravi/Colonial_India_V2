@@ -25,17 +25,19 @@
   <a class="navTopic" (click)="scrollTo('#events')">
     People, Places and events
   </a>
-  <a class="navTopic">Chronology of events</a>
-  <a class="navTopic"
+  <a class="navTopic" (click)="scrollTo('#events')">Chronology of events</a>
+  <a class="navTopic" (click)="scrollTo('#rulers')"
     >Rulers and their <br />
     contribution</a
   >
-  <a class="navTopic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+  <a class="navTopic" (click)="scrollTo('#tail')"
+    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+  >
 </div>
-
 <app-intro id="intro"></app-intro>
 <app-looted-treasure id="lootedTreasure"></app-looted-treasure>
 <app-impact id="impacts"></app-impact>
-
 <app-looted-human-resource id="lootedResource"></app-looted-human-resource>
 <app-places-events id="events"></app-places-events>
+<app-rulers-contribution id="rulers"></app-rulers-contribution>
+<app-tail id="tail"> </app-tail>

@@ -14,3 +14,9 @@
   font-family: "montserratEBold";
   src: url("./Montserrat/Montserrat-ExtraBold.ttf");
 }
+
+
+@font-face {
+  font-family: "montserratSBold";
+  src: url("./Montserrat/Montserrat-SemiBold.ttf");
+}

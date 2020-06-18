@@ -23,6 +23,9 @@ import { ArmyWorldHighlightsComponent } from './chartComponents/army-world-highl
 import { LabourWorldHighlightsComponent } from './chartComponents/labour-world-highlights/labour-world-highlights.component';
 import { PeopleIndiaHighlightsComponent } from './chartComponents/people-india-highlights/people-india-highlights.component';
 import { InViewportModule } from 'ng-in-viewport';
+import { RulersComponent } from './chartComponents/rulers/rulers.component';
+import { RulersContributionComponent } from './rulers-contribution/rulers-contribution.component';
+import { HistoricalEventsComponent } from './chartComponents/historical-events/historical-events.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { InViewportModule } from 'ng-in-viewport';
     PeopleChartComponent,
     ArmyWorldHighlightsComponent,
     LabourWorldHighlightsComponent,
-    PeopleIndiaHighlightsComponent
+    PeopleIndiaHighlightsComponent,
+    RulersComponent,
+    RulersContributionComponent,
+    HistoricalEventsComponent
   ],
   imports: [
     BrowserModule,

@@ -31,8 +31,8 @@ export class PeopleIndiaHighlightsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.width = 590;
-    this.height = 700;
+    this.width = 490;
+    this.height = 580;
 
     this.projection = d3.geoMercator().center([83, 23]).scale(800).translate([this.width / 2, this.height / 2]);
     this.pathGenerator = d3.geoPath().projection(this.projection);

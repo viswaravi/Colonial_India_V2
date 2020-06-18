@@ -1,0 +1,27 @@
+<div id="eventsContainer">
+  <div *ngFor="let event of events">
+    <div class="row">
+      <div class="col-12">
+        <img src="{{ event.Image }}" style="width: inherit; height: auto;border-radius: 5px;" />
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-3">
+        <div class="dateContainer">
+          <p>Place</p>
+          <h5>India</h5>
+          <p>{{ event.Years }}</p>
+        </div>
+      </div>
+      <div class="col-8">
+        <div *ngFor="let text of event.Text" class="eventsText">
+          {{ text }}
+          <br />
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>

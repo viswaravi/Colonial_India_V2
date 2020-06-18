@@ -34,7 +34,16 @@
   <br />
 
   <div class="row">
-    <div class="col-2">
+    <div
+      class="col-2"
+      style="
+        border-right: 2px solid #9e9383;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+      "
+    >
       <p id="yearsText">Years</p>
       <div id="timeline">
         <app-event-timeline
@@ -42,17 +51,53 @@
         ></app-event-timeline>
       </div>
     </div>
-    <div class="col-4">
+    <div
+      class="col-4"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0px;
+      "
+    >
       <app-key-highlights [showHighlight]="keyHighlights"></app-key-highlights>
     </div>
-    <div class="col-6" style="display: flex; flex-direction: column;">
-      <app-peoples-map-boxed
-        (INpersonHighlight)="updateHighlightsIN($event)"
-        (OUTpersonHighlight)="updateHighlightsOUT($event)"
-        [peopleImages]="peopleImages"
-      ></app-peoples-map-boxed>
-      <app-world-highlights [placesToHighlight]="placesToHighlight">
-      </app-world-highlights>
+    <div
+      class="col-6"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+        border-radius: 8px;
+        padding-right: 0px;
+      "
+    >
+      <div [ngClass]="{ hide: !isPeople }">
+        <app-peoples-map-boxed
+          (INpersonHighlight)="updateHighlightsIN($event)"
+          (OUTpersonHighlight)="updateHighlightsOUT($event)"
+          [peopleImages]="peopleImages"
+        ></app-peoples-map-boxed>
+        <app-world-highlights [placesToHighlight]="placesToHighlight">
+        </app-world-highlights>
+      </div>
+
+      <div
+        [ngClass]="{ hide: isPeople }"
+        style="overflow-y: scroll; max-height: 700px; overflow-x: hidden;"
+      >
+        <app-historical-events
+          [events]="historicalEvents"
+        ></app-historical-events>
+      </div>
+      <img
+        src="../../assets/images/swap.png"
+        height="50"
+        weight="50"
+        style="cursor: pointer;"
+        (click)="toggleContent()"
+      />
     </div>
   </div>
 </div>

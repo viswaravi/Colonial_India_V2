@@ -1,0 +1,11 @@
+<div id="rulerImages">
+  <div
+    *ngFor="let ruler of rulersImages"
+    style="margin-bottom: 60px; position: relative;"
+  >
+    <img src="{{ ruler }}" width="150" height="150" class="rImage" />
+    <div class="imgBg" id="{{ ruler }}">
+      <p class="rName" >{{ getName(ruler) }}</p>
+    </div>
+  </div>
+</div>

@@ -35,16 +35,16 @@ export class PeoplesMapBoxedComponent implements OnInit {
   elements: any;
   patterns: any
   simulation: any;
-  radius = 17;
+  radius = 16;
   diameter = this.radius * 2;
   highlightPersonID: String;
 
   constructor() { }
   ngOnInit() {
-    this.highlightPersonID = null;
   }
 
   ngAfterViewInit() {
+    this.highlightPersonID = null;
     this.createCustomChart();
   }
 
@@ -81,6 +81,9 @@ export class PeoplesMapBoxedComponent implements OnInit {
 
 
   getPosY(index) {
+
+    index = index + 1;
+
     let y = 0;
     //  Nodes in a Row
     let NROW = 18;
@@ -100,13 +103,16 @@ export class PeoplesMapBoxedComponent implements OnInit {
   getPosX(index) {
     let NROW = 18;
 
+    index = index + 1;
+
     let rem = index % NROW;
 
     if (rem == 0) {
-      rem = rem + 1;
+      return this.radius;
     }
 
-    return ((rem * (this.diameter + 10)));
+
+    return ((rem * (this.diameter+11))+this.radius);
   }
 
   createNodes() {
@@ -159,6 +165,9 @@ export class PeoplesMapBoxedComponent implements OnInit {
   getFontSize(name) {
     if (name.length >= 25) {
       return 7;
+    }
+    if (name.length >= 20) {
+      return 9;
     }
     if (name.length >= 15) {
       return 11;
@@ -219,17 +228,19 @@ export class PeoplesMapBoxedComponent implements OnInit {
       this.INpersonHighlight.emit({ id: d3.event.target.id });
 
       // White Background for Highlight
-      /*this.svg.append('rect')
+      this.svg.append('rect')
         .attr('id', 'tempRect')
         .attr('class', 'imgBack')
         .attr('height', 120)
         .attr('width', 170)
         .attr('x', d3.event.target.cx.baseVal.value - 85 + this.getOffsetX(d3.event.target.cx.baseVal.value))
         .attr('y', d3.event.target.cy.baseVal.value + this.getOffsetY(d3.event.target.cy.baseVal.value))
+        .attr('rx', 10)
+        .attr('ry', 10)
         .attr("cursor", "ns-resize")
         .style('fill', 'white');
-      */
 
+      /*
       let x = d3.event.target.cx.baseVal.value - 85 + this.getOffsetX(d3.event.target.cx.baseVal.value);
       let y = d3.event.target.cy.baseVal.value + this.getOffsetY(d3.event.target.cy.baseVal.value);
 
@@ -242,7 +253,7 @@ export class PeoplesMapBoxedComponent implements OnInit {
         .attr('class', 'imgBack')
         .attr("cursor", "ns-resize")
         .style('fill', 'white');
-
+      */
 
       // Circle Image
       this.svg.append('circle')

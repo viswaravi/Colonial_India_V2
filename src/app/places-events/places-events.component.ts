@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as data from '../../assets/data/Highlights_2.json';
+import * as events from '../../assets/data/formatted_events.json';
+
 @Component({
   selector: 'app-places-events',
   templateUrl: './places-events.component.html',
@@ -16,23 +18,67 @@ export class PlacesEventsComponent implements OnInit {
   backUpKeyHighlights = [];
   placesToHighlight = [];
   backUpPlacesToHighlight = [];
-
+  isPeople = true;
+  historicalEvents = [];
 
   constructor() { }
 
+
+  toggleContent() {
+    this.isPeople = !this.isPeople;
+  }
+
   ngOnInit(): void {
+    //  this.highlights = data['default'];
+    // console.log('Highlights :', this.highlights);
+    // this.getPeople(1600, 1950);
+    // this.getYearHighlights(1600, 1950);
+  }
+
+
+  ngAfterViewInit() {
     this.highlights = data['default'];
     // console.log('Highlights :', this.highlights);
     this.getPeople(1600, 1950);
     this.getYearHighlights(1600, 1950);
+    this.getEvents(1600, 1950);
   }
+
 
   updateContent(event) {
     this.fromyear = event.fromYear;
     this.toYear = event.toYear;
     this.getPeople(this.fromyear, this.toYear);
     this.getYearHighlights(this.fromyear, this.toYear);
+    this.getEvents(this.fromyear, this.toYear);
   }
+
+
+
+  getEvents(rfy, rty) {
+    this.historicalEvents = [];
+    let efy, ety;
+    events['default'].forEach(event => {
+      if (event.Years != "") {
+        // Events having from and to Years
+        if (event.Years.toString().length == 9) {
+          efy = Number(event.Years.split('-')[0]);
+          ety = Number(event.Years.split('-')[1]);
+          if (((efy >= rfy && ety <= rty) || (efy >= rfy && efy <= rty) || (ety >= rfy && ety <= rty)) && event.People != "") {
+            this.historicalEvents.push(event);
+          }
+        } else if (event.Years.toString().length == 4) {
+          // Single Year 
+          if (event.Years >= rfy && event.Years < rty) {
+            this.historicalEvents.push(event);
+          }
+        }
+      }
+    });
+    //    console.log(this.historicalEvents);
+  }
+
+
 
   getPeople(rfy, rty) {
     this.peopleImages = [];
@@ -109,7 +155,7 @@ export class PlacesEventsComponent implements OnInit {
   }
 
   updateHighlightsIN(event) {
-   // console.log("Person:", event.id + '.jpg');
+    // console.log("Person:", event.id + '.jpg');
     this.getKeyHighlightsbyID(event.id + '.jpg');
   }
 
@@ -130,7 +176,7 @@ export class PlacesEventsComponent implements OnInit {
         });
       }
     });
-  //  console.log('Places for this Person:', this.placesToHighlight);
+    //  console.log('Places for this Person:', this.placesToHighlight);
   }
 
   updateHighlightsOUT(event) {

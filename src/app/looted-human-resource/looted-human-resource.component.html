@@ -273,6 +273,7 @@
           *ngFor="let place of peoplePlaces"
           class="place"
           (click)="setActivePeopleContent(place)"
+          style="max-width: 200px;"
           [ngClass]="{ placeHighlight: isActivePeoplePlace(place) }"
         >
           {{ place }} <br />
@@ -280,7 +281,17 @@
         </div>
       </div>
 
-      <div class="col-5" id="armyChartContainer">
+      <div
+        class="col-5"
+        id="armyChartContainer"
+        style="
+          width: 696px;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          padding-left: 40px;
+        "
+      >
         <div></div>
         <div *ngIf="activePeoplePlace != 'others'">
           <app-people-chart
@@ -296,7 +307,10 @@
         </div>
       </div>
 
-      <div class="col-5">
+      <div
+        class="col-5"
+        style="display: flex; flex-direction: row; justify-content: center;"
+      >
         <app-people-india-highlights
           [statesToHighlight]="activePeopleState"
         ></app-people-india-highlights>
