@@ -36,7 +36,7 @@ export class AppComponent {
   }
 
 
-  @HostListener('window:scroll',   ['$event']) onScrollEvent($event) {
+  @HostListener('window:scroll', ['$event']) onScrollEvent($event) {
     // console.log(event);
     // console.log(window.pageYOffset);
 
@@ -47,29 +47,33 @@ export class AppComponent {
     }
 
 
-    console.log(window.pageYOffset);
+  //  console.log(window.pageYOffset);
 
-    if(window.pageYOffset<1173){
-      this.dispComponent ='intro';
+    if (window.pageYOffset < 1173) {
+      this.dispComponent = 'intro';
     }
-    if(window.pageYOffset>910 && window.pageYOffset<1790){
-      this.dispComponent ='lootedTreasure';
+    if (window.pageYOffset > 910 && window.pageYOffset < 1790) {
+      this.dispComponent = 'lootedTreasure';
     }
-    if(window.pageYOffset>1790 && window.pageYOffset<2740){
-      this.dispComponent ='impacts';
+    if (window.pageYOffset > 1790 && window.pageYOffset < 2700) {
+      this.dispComponent = 'impacts';
     }
-    
-    if(window.pageYOffset>1790 && window.pageYOffset<2740){
-      this.dispComponent ='lootedResource';
+
+    if (window.pageYOffset > 2700 && window.pageYOffset < 3500) {
+      this.dispComponent = 'lootedResource';
     }
-    if(window.pageYOffset>1790 && window.pageYOffset<2740){
-      this.dispComponent ='events';
+
+
+    if (window.pageYOffset > 3500 && window.pageYOffset < 4520) {
+      this.dispComponent = 'events';
     }
-    if(window.pageYOffset>1790 && window.pageYOffset<2740){
-      this.dispComponent ='rulers';
+
+    if (window.pageYOffset > 4520 && window.pageYOffset < 4910) {
+      this.dispComponent = 'rulers';
     }
-    if(window.pageYOffset>1790 && window.pageYOffset<2740){
-      this.dispComponent ='tail';
+
+    if (window.pageYOffset > 4910) {
+      this.dispComponent = 'tail';
     }
 
   }

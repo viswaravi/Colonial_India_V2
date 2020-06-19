@@ -93,14 +93,14 @@ export class LabourWorldHighlightsComponent implements OnInit {
       cNames.push(country.trim());
     });
 
-    console.log(cNames);
+  //  console.log(cNames);
 
     
     this.svg.selectAll('#cCountry').remove();
 
     cNames.map(country => {
       if (this.cCountries.includes(country)) {
-        console.log('Added :', country, this.cLocations[country]);
+       // console.log('Added :', country, this.cLocations[country]);
         this.circleLocation = this.svg.selectAll("circle")
           .data([this.cLocations[country]])
           .enter()
@@ -125,7 +125,7 @@ export class LabourWorldHighlightsComponent implements OnInit {
       cNames.push(country.trim());
     });
 
-    console.log(cNames);
+  //  console.log(cNames);
 
     if (cNames.includes(d.properties.name.trim())) {
       return '#613207';

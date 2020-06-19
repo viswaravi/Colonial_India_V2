@@ -1,12 +1,37 @@
 #eventsContainer {
   padding: 50px;
   background-color: #d9ccb9;
+  padding-top: 30px;
 }
 
 #eventHead {
   font-size: 40px;
   letter-spacing: 1px;
   font-family: merriweatherBold;
+
+  border-top: 4px solid #613207;
+  border-bottom: 4px solid #613207;
+}
+
+#headWrapper {
+  border-top: 2px solid #613207;
+  border-bottom: 2px solid #613207;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  max-width: 60vw;
+}
+
+#rulersHead {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-top: 4px solid #613207;
+  border-bottom: 4px solid #613207;
+  font-size: 30px;
+  font-family: merriweatherBold;
+  letter-spacing: 0.6px;
 }
 
 #eventDate {
@@ -17,12 +42,14 @@
   border-right: 1px solid #b7ab9b;
   text-align: right;
   border-bottom: 1px solid #b7ab9b;
-  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138);
+  box-shadow: 3px 3px 6px -3px rgba(154, 120, 63, 0.991989);
   color: black;
   font-family: montserratBold;
   font-size: 12px;
   padding-right: 15px;
-  margin-bottom: 20px;
+  height: 100%;
+  width: 80%;
+  margin-right: 0px;
 }
 
 #eventSubHead {
@@ -37,6 +64,9 @@
   color: #594e47;
   font-size: 12px;
   font-family: montserratBold;
+  line-height: 20px;
+  text-align: justify;
+  margin-bottom: 0px;
 }
 
 #timeline {
@@ -56,6 +86,7 @@
   font-family: merriWeather;
   font-weight: bold;
   padding-left: 10px;
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -77,4 +108,12 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #623200;
+}
+
+#headWrapper {
+  border-top: 2px solid #613207;
+  border-bottom: 2px solid #613207;
+  padding: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }

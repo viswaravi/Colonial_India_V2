@@ -1,13 +1,26 @@
 <div id="eventsContainer">
   <div class="row">
-    <div class="col-4" id="eventHead">
+    <!-- <div class="col-4" id="eventHead">
       People, places & <br />
       historical events
     </div>
+    -->
+    <div
+      class="col-4"
+      style="display: flex; flex-direction: row; justify-content: center;"
+    >
+      <div id="headWrapper">
+        <div id="impactHead">
+          People, places & <br />
+          historical events
+        </div>
+      </div>
+    </div>
+    
     <div class="col-8">
       <div class="row">
         <div class="col-2" id="eventDate">
-          <p>7 June 2020</p>
+          <p>1600 - 1947</p>
           <h5>India</h5>
         </div>
         <div class="col-10">
@@ -68,7 +81,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
         border-radius: 8px;
         padding-right: 0px;
       "
@@ -89,10 +101,22 @@
       >
         <app-historical-events
           [events]="historicalEvents"
+          [hevents]="HEvents"
+          [eventNames]="eventNames"
         ></app-historical-events>
       </div>
+
       <img
-        src="../../assets/images/swap.png"
+        *ngIf="isPeople"
+        src="../../assets/images/down.png"
+        height="50"
+        weight="50"
+        style="cursor: pointer;"
+        (click)="toggleContent()"
+      />
+      <img
+        *ngIf="!isPeople"
+        src="../../assets/images/up.png"
         height="50"
         weight="50"
         style="cursor: pointer;"

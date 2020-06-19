@@ -1,6 +1,10 @@
 <div id="humanResourceConatiner">
-  <div>
-    <h1>Looted Human Resources</h1>
+  <div style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 20px;">
+    <div id="headWrapper">
+      <div id="resourceHead">
+        <h1>Looted Human Resources</h1>
+      </div>
+    </div>
   </div>
 
   <div id="topicConatiner">
@@ -26,19 +30,37 @@
   <!--*ngIf="isActiveTopic('ARMY')"-->
   <div [ngClass]="{ hide: !isActiveTopic('ARMY') }">
     <div class="row">
-      <div id="armyPlaceContainer" class="col-2">
-        <div
-          *ngFor="let place of armyPlaces"
-          class="place"
-          (click)="setActiveArmyContent(place)"
-          [ngClass]="{ placeHighlight: isActiveArmyPlace(place) }"
-        >
-          {{ place }}
+      <div
+        class="col-2"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        "
+      >
+        <p class="graphHead">Place</p>
+        <div id="armyPlaceContainer">
+          <div
+            *ngFor="let place of armyPlaces"
+            class="place"
+            (click)="setActiveArmyContent(place)"
+            [ngClass]="{ placeHighlight: isActiveArmyPlace(place) }"
+          >
+            {{ place }}
+          </div>
         </div>
       </div>
 
       <div class="col-5" id="armyChartContainer">
-        <div></div>
+        <p class="graphHead">Soldier Troop Deployed</p>
+        <p id="armyIconInfo">
+          <img
+            width="40"
+            height="40"
+            src="../../assets/images/SoldierAlive.png"
+          />
+          = 4500 soldiers troop
+        </p>
         <div *ngIf="activeArmyPlace != 'others'">
           <app-army-chart
             [count]="activeArmyContent['count']"
@@ -46,14 +68,6 @@
           ></app-army-chart>
           <p class="troopInfo">
             {{ activeArmyContent["text"] }}
-          </p>
-          <p id="armyIconInfo">
-            <img
-              width="40"
-              height="40"
-              src="../../assets/images/SoldierAlive.png"
-            />
-            = 4500 soldiers troop
           </p>
         </div>
 
@@ -184,6 +198,7 @@
       </div>
 
       <div class="col-5">
+        <p class="graphHead">Soldier Troop Deployed Locations</p>
         <app-army-world-highlights
           [countriesToHighlight]="activeArmyCountries"
         ></app-army-world-highlights>
@@ -193,30 +208,33 @@
 
   <div [ngClass]="{ hide: !isActiveTopic('LABOUR') }">
     <div class="row">
-      <div id="armyPlaceContainer" class="col-2">
-        <div
-          *ngFor="let place of labourPlaces"
-          class="place"
-          (click)="setActiveLabourContent(place)"
-          [ngClass]="{ placeHighlight: isActiveLabourPlace(place) }"
-        >
-          {{ place }} <br />
-          {{ getPeopleMigratedYear(place) }}
+      <div class="col-2">
+        <p class="graphHead">Place</p>
+        <div id="armyPlaceContainer">
+          <div
+            *ngFor="let place of labourPlaces"
+            class="place"
+            (click)="setActiveLabourContent(place)"
+            [ngClass]="{ placeHighlight: isActiveLabourPlace(place) }"
+          >
+            {{ place }} <br />
+            {{ getPeopleMigratedYear(place) }}
+          </div>
         </div>
       </div>
 
       <div class="col-5" id="armyChartContainer">
-        <div></div>
+        <p class="graphHead">Labours Migrated</p>
+        <p id="armyIconInfo">
+          <img width="40" height="30" src="../../assets/images/labour.png" />
+          = 23000 Labourers
+        </p>
         <div *ngIf="activeLabourPlace != 'others'">
           <app-labour-chart
             [count]="activeLabourContent['count']"
           ></app-labour-chart>
           <p class="troopInfo">
             {{ activeArmyContent["text"] }}
-          </p>
-          <p id="armyIconInfo">
-            <img width="60" height="60" src="../../assets/images/labour.png" />
-            = 23000 Labourers
           </p>
         </div>
 
@@ -259,6 +277,7 @@
       </div>
 
       <div class="col-5">
+        <p class="graphHead">Labour Migrated Locations</p>
         <app-labour-world-highlights
           [countriesToHighlight]="activeLabourCountries"
         ></app-labour-world-highlights>
@@ -268,49 +287,59 @@
 
   <div [ngClass]="{ hide: !isActiveTopic('PEOPLE') }">
     <div class="row">
-      <div id="peoplePlaceContainer" class="col-2">
+      <div class="col-2">
+        <p class="graphHead">Place</p>
+        <div id="peoplePlaceContainer">
+          <div
+            *ngFor="let place of peoplePlaces"
+            class="place"
+            (click)="setActivePeopleContent(place)"
+            style="max-width: 200px;"
+            [ngClass]="{ placeHighlight: isActivePeoplePlace(place) }"
+          >
+            {{ place }} <br />
+            {{ getPeopleDiedYear(place) }}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-5" style="border-left: 2px solid #9e9383;">
+        <p class="graphHead">People Migrated</p>
+        <p id="armyIconInfo">
+          <img width="40" height="30" src="../../assets/images/labour.png" />
+          = 100,000 People
+        </p>
+
         <div
-          *ngFor="let place of peoplePlaces"
-          class="place"
-          (click)="setActivePeopleContent(place)"
-          style="max-width: 200px;"
-          [ngClass]="{ placeHighlight: isActivePeoplePlace(place) }"
+          style="
+            width: 696px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-left: 40px;
+          "
         >
-          {{ place }} <br />
-          {{ getPeopleDiedYear(place) }}
+          <div *ngIf="activePeoplePlace != 'others'">
+            <app-people-chart
+              [count]="activePeopleContent['count']"
+            ></app-people-chart>
+            <p class="troopInfo">
+              {{ activePeopleContent["text"] }}
+            </p>
+          </div>
         </div>
       </div>
 
       <div
         class="col-5"
-        id="armyChartContainer"
         style="
-          width: 696px;
           display: flex;
-          flex-direction: row;
-          justify-content: center;
-          padding-left: 40px;
+          flex-direction: column;
+          justify-content: flex-start;
         "
       >
-        <div></div>
-        <div *ngIf="activePeoplePlace != 'others'">
-          <app-people-chart
-            [count]="activePeopleContent['count']"
-          ></app-people-chart>
-          <p class="troopInfo">
-            {{ activePeopleContent["text"] }}
-          </p>
-          <p id="armyIconInfo">
-            <img width="60" height="60" src="../../assets/images/labour.png" />
-            = 0 People
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="col-5"
-        style="display: flex; flex-direction: row; justify-content: center;"
-      >
+        <p class="graphHead">People Migrated Locations</p>
         <app-people-india-highlights
           [statesToHighlight]="activePeopleState"
         ></app-people-india-highlights>

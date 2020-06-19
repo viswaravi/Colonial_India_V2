@@ -15,3 +15,8 @@
   font-family: montserratEBold;
   text-decoration: underline;
 }
+
+a {
+  color: black;
+  text-decoration: underline;
+}

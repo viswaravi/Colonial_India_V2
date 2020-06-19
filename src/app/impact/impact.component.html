@@ -1,13 +1,20 @@
 <div id="impactContainer">
   <div class="row">
-    <div class="col-4" id="impactHead">
-      Impact of British <br />
-      Rule on India
+    <div
+      class="col-4"
+      style="display: flex; flex-direction: row; justify-content: center;"
+    >
+      <div id="headWrapper">
+        <div id="impactHead">
+          Impact of British <br />
+          Rule on India
+        </div>
+      </div>
     </div>
     <div class="col-8">
       <div class="row">
         <div class="col-2" id="impactDate">
-          <p>7 June 2020</p>
+          <p>1600 - June 2020</p>
           <h5>India</h5>
         </div>
         <div class="col-10">
@@ -29,7 +36,7 @@
   </div>
   <br />
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       <p class="impactGraphHead">Years</p>
       <div id="yearIndicator">
         <p (click)="toggleState()">
@@ -73,7 +80,10 @@
         </div>
       </div>
     </div>
-    <div class="col-7">
+    <div
+      class="col-6"
+      style="border-right: 2px solid #9e9383; border-left: 2px solid #9e9383;"
+    >
       <p class="impactGraphHead">
         Decline of economy with respect to population
       </p>

@@ -22,8 +22,9 @@ export class RulersContributionComponent implements OnInit {
   rulersToHighlight = [];
   rulerImages = [];
   rulerEvents = new Map();
+  rulersYears = new Map();
 
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class RulersContributionComponent implements OnInit {
     this.rulersToHighlight = [];
     this.rulerImages = [];
     this.rulerEvents = new Map();
+    this.rulersYears = new Map();
 
     let efy, ety;
 
@@ -67,24 +69,16 @@ export class RulersContributionComponent implements OnInit {
       }
     });
 
-    console.log('Rulers: ', this.rulersToHighlight);
-    console.log('Images: ', this.rulerImages);
-    console.log('Events: ', this.rulerEvents);
+  //  console.log('Rulers: ', this.rulersToHighlight);
+  //  console.log('Images: ', this.rulerImages);
+  //  console.log('Events: ', this.rulerEvents);
 
-
+    this.addEvents();
 
   }
 
-  addRuler(ruler) {
-    if (!this.rulersToHighlight.includes(ruler['Governors'])) {
-      this.rulersToHighlight.push(ruler['Governors']);
-      this.rulerEvents.set(ruler['Governors'], []);
-    }
-
-    if (ruler['Images'] != "") {
-      if (this.rulersToHighlight.includes(ruler['Governors']) && !this.rulerImages.includes('../../../assets/images/Rulers/' + ruler['Images'])) {
-        this.rulerImages.push('../../../assets/images/Rulers/' + ruler['Images']);
-      }
+  addEvents() {
+    rulers['default'].map(ruler => {
 
       if (this.rulersToHighlight.includes(ruler['Governors']) && ruler['Events'] != "") {
 
@@ -93,6 +87,27 @@ export class RulersContributionComponent implements OnInit {
         this.rulerEvents.set(ruler['Governors'], evts);
       }
 
+    });
+  }
+
+
+  addRuler(ruler) {
+    if (!this.rulersToHighlight.includes(ruler['Governors'])) {
+      this.rulersToHighlight.push(ruler['Governors']);
+      this.rulerEvents.set(ruler['Governors'], []);
+      this.rulersYears.set(ruler['Governors'], ruler['Years']);
+
+      if (ruler['Events'] != "") {
+        let evts = this.rulerEvents.get(ruler['Governors']);
+        evts.push(ruler['Events']);
+        this.rulerEvents.set(ruler['Governors'], evts);
+      }
+    }
+
+    if (ruler['Images'] != "") {
+      if (this.rulersToHighlight.includes(ruler['Governors']) && !this.rulerImages.includes('../../../assets/images/Rulers/' + ruler['Images'])) {
+        this.rulerImages.push('../../../assets/images/Rulers/' + ruler['Images']);
+      }
     }
   }
 

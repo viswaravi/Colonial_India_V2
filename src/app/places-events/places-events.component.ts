@@ -19,7 +19,23 @@ export class PlacesEventsComponent implements OnInit {
   placesToHighlight = [];
   backUpPlacesToHighlight = [];
   isPeople = true;
+
+  //Events
   historicalEvents = [];
+  HEvents = new Map();
+  eventNames = [];
+
+
+  /**
+  {
+    event:'',
+    image:'',
+    data:[
+      year:'',
+      text:''
+    ]
+  } 
+  */
 
   constructor() { }
 
@@ -42,6 +58,8 @@ export class PlacesEventsComponent implements OnInit {
     this.getPeople(1600, 1950);
     this.getYearHighlights(1600, 1950);
     this.getEvents(1600, 1950);
+
+    console.log('HE:', this.HEvents);
   }
 
 
@@ -51,12 +69,15 @@ export class PlacesEventsComponent implements OnInit {
     this.getPeople(this.fromyear, this.toYear);
     this.getYearHighlights(this.fromyear, this.toYear);
     this.getEvents(this.fromyear, this.toYear);
+
+    console.log('HE:', this.HEvents);
   }
 
 
 
   getEvents(rfy, rty) {
     this.historicalEvents = [];
+    this.HEvents = new Map();
     let efy, ety;
     events['default'].forEach(event => {
       if (event.Years != "") {
@@ -66,11 +87,13 @@ export class PlacesEventsComponent implements OnInit {
           ety = Number(event.Years.split('-')[1]);
           if (((efy >= rfy && ety <= rty) || (efy >= rfy && efy <= rty) || (ety >= rfy && ety <= rty)) && event.People != "") {
             this.historicalEvents.push(event);
+            this.addEvent(event);
           }
         } else if (event.Years.toString().length == 4) {
           // Single Year 
           if (event.Years >= rfy && event.Years < rty) {
             this.historicalEvents.push(event);
+            this.addEvent(event);
           }
         }
       }
@@ -78,6 +101,25 @@ export class PlacesEventsComponent implements OnInit {
     //    console.log(this.historicalEvents);
   }
 
+  addEvent(event) {
+    if (!this.HEvents.has(event['Event'])) {
+      this.HEvents.set(event['Event'], {
+        image: event['Image'],
+        data: []
+      });
+    }
+
+    let obj = this.HEvents.get(event['Event']);
+    obj.data.push({
+      year: event['Years'],
+      text: event['Text']
+    });
+
+    if (!this.eventNames.includes(event['Event'])) {
+      this.eventNames.push(event['Event']);
+    }
+
+  }
 
 
   getPeople(rfy, rty) {

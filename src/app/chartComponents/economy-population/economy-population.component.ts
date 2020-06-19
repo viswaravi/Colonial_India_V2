@@ -60,7 +60,7 @@ export class EconomyPopulationComponent implements OnInit {
     //  console.log('Changed State', this.chartState);
     //  console.log('Changed Year ', this.currentYearIndex);
 
-
+    this.updateYearNames();
     if (this.chartState == 'goto') {
       console.log('GOTO GRAPH', this.currentYearIndex);
       this.localGraphState = 'goto';
@@ -76,6 +76,7 @@ export class EconomyPopulationComponent implements OnInit {
       // If Starting Point Move the Dash Offset 
       if (this.currentYearIndex == 0) {
         this.clearChart();
+        this.clearYearNames();
         console.log('RESET GRAPH');
         this.localGraphState = 'empty';
         this.resumeCount = 0;
@@ -258,23 +259,25 @@ export class EconomyPopulationComponent implements OnInit {
         .attr("fill", "none");
     });
 
+    /*
     // Add Data Point Numbers in Graph
     data['default'].map(dt => {
       this.dataColumns.map(col => {
         // Name on Background
         this.svg.append('text')
-          .attr('x', this.xScale(dt['Years']) + 10)
-          .attr('y', this.yScale(dt[col]))
+          .attr('x', this.xScale(dt['Years']) - 10)
+          .attr('y', this.yScale(dt[col]) - 10)
           .attr('font-family', 'montserratBold')
-          .attr('font-color', 'black')
-          .attr('transform', `translate(${this.margin.left+10}, ${-this.margin.bottom - 10})`)
+          .attr('fill', '#594e47')
+          .attr('transform', `translate(${this.margin.left + 10}, ${-this.margin.bottom - 10})`)
           .attr('word-wrap', 'break-word')
           .attr('letter-spacing', 0.2)
           .attr('font-size', 12)
           .text(dt[col]);
       });
     });
-
+    */
+    this.updateYearNames();
 
   }
 
@@ -473,6 +476,8 @@ export class EconomyPopulationComponent implements OnInit {
     this.pauseChart();
     this.removeChartLines();
     this.createChartLines();
+    this.clearYearNames();
+    this.updateYearNames();
 
     // Create Lines
     // Add SVG Lines for the Data
@@ -498,6 +503,39 @@ export class EconomyPopulationComponent implements OnInit {
     console.log('OFF SAVE:', this.offsets);
 
 
+  }
+
+
+  updateYearNames() {
+    let yearData = [];
+    data['default'].map((dt, index) => {
+      if (index <= this.currentYearIndex) {
+        yearData.push(dt);
+      }
+    });
+
+    yearData.map(dt => {
+      this.dataColumns.map(col => {
+        // Year value on Dots
+        this.svg.append('text')
+          .attr('x', this.xScale(dt['Years']) - 10)
+          .attr('y', this.yScale(dt[col]) - 10)
+          .attr('font-family', 'montserratBold')
+          .attr('fill', '#594e47')
+          .attr('class', 'yvalues')
+          .attr('transform', `translate(${this.margin.left + 10}, ${-this.margin.bottom - 10})`)
+          .attr('word-wrap', 'break-word')
+          .attr('letter-spacing', 0.2)
+          .attr('font-size', 12)
+          .text(dt[col]);
+      });
+    });
+
+  }
+
+
+  clearYearNames() {
+    d3.selectAll('.yvalues').remove();
   }
 
 }

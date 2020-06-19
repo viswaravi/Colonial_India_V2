@@ -59,7 +59,8 @@ export class LabourChartComponent implements OnInit {
     y = parseInt(t.toString().split('.')[0]);
 
     // radius - 13 diameter - 26, add for spacing
-    let ypos = ((NROW - 1 - y) * (this.imgWidth + 1));
+    //let ypos = ((NROW - 1 - y) * (this.imgWidth + 1));
+    let ypos = ((y) * (this.imgWidth + 1));
 
     // console.log('YPOS: ', ypos);
 
@@ -76,7 +77,7 @@ export class LabourChartComponent implements OnInit {
     let rowNum = index / NROW;
     rowNum = parseInt(rowNum.toString().split('.')[0]);
     // if (rowNum % 2 == 0) {
-    rem = NROW - rem - 1;
+   // rem = NROW - rem - 1;
     // }
 
     let xpos = ((rem * (this.imgWidth + 10)));

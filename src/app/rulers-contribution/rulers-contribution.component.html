@@ -1,14 +1,45 @@
 <div id="eventsContainer">
-  <div class="row">
-    <div class="col-4" id="eventHead">
-      Rulers and their <br />
-      Contribution
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 20px;
+    "
+  >
+    <div id="headWrapper">
+      <div id="rulersHead">
+        Rulers and their Contribution
+      </div>
     </div>
-    <div class="col-8">
+  </div>
+
+  <!--
+  <div class="row" style="margin-bottom: 20px;">
+    <div class="col-4" id="headWrapper">
+      <div id="eventHead">
+        Rulers and their <br />
+        Contribution
+      </div>
+    </div>
+    <div
+      class="col-8"
+      style="
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+      "
+    >
       <div class="row">
-        <div class="col-2" id="eventDate">
-          <p>7 June 2020</p>
-          <h5>India</h5>
+        <div
+          class="col-2"
+          style="display: flex; flex-direction: column; align-items: flex-end;"
+        >
+          <div id="eventDate">
+            <p>7 June 2020</p>
+            <h5>India</h5>
+          </div>
         </div>
         <div class="col-10">
           <p id="eventContent">
@@ -25,7 +56,7 @@
       </div>
     </div>
   </div>
-
+-->
   <div class="row">
     <div
       class="col-2"
@@ -44,32 +75,44 @@
         ></app-event-timeline>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-3" style="border-right: 2px solid #9e9383;">
+      <p id="yearsText">Rulers</p>
       <app-rulers
-        [rulersToHighlight]="rulersToHighlight"
         [rulersImages]="rulerImages"
-        [rulersEvents]="rulerEvents"
+        [rulersYears]="rulersYears"
       ></app-rulers>
     </div>
     <div class="col-1"></div>
+
     <div
       class="col-6"
       style="
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: flex-start;
-        box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
         border-radius: 8px;
         padding-right: 0px;
-        overflow-y: scroll;
         height: 600px;
         padding: 10px;
         font-family: montserrat;
       "
     >
-      <div *ngFor="let ruler of rulersToHighlight">
-        <h4>{{ ruler }}</h4>
-        <div *ngFor="let evt of rulerEvents.get(ruler)">{{ evt }}</div>
+      <p
+        id="yearsText"
+        style="
+          margin-bottom: 16px;
+          text-align: center !important;
+          align-self: center !important;
+        "
+      >
+        Contributions
+      </p>
+      <div style="overflow-y: scroll;">
+        <div *ngFor="let ruler of rulersToHighlight">
+          <h4>{{ ruler }}</h4>
+          <div *ngFor="let evt of rulerEvents.get(ruler)">{{ evt }}</div>
+        </div>
       </div>
     </div>
   </div>

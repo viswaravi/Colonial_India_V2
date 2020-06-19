@@ -63,16 +63,17 @@ export class ArmyChartComponent implements OnInit, AfterViewInit {
     y = parseInt(t.toString().split('.')[0]);
 
     // radius - 13 diameter - 26, add for spacing
-    let ypos = ((NROW - 1 - y) * (this.imgWidth + 1));
+    //   let ypos = ((NROW - 1 - y) * (this.imgWidth + 1));
+    let ypos = ((y) * (this.imgWidth + 1));
 
-   // console.log('YPOS: ', ypos);
+    // console.log('YPOS: ', ypos);
 
     return ypos;
   }
 
   getPosX(index) {
 
-  //  console.log('INDEX :', index);
+    //  console.log('INDEX :', index);
 
     let NROW = 15;
 
@@ -82,12 +83,12 @@ export class ArmyChartComponent implements OnInit, AfterViewInit {
     let rowNum = index / NROW;
     rowNum = parseInt(rowNum.toString().split('.')[0]);
     // if (rowNum % 2 == 0) {
-    rem = NROW - rem - 1;
+    //   rem = NROW - rem - 1;
     // }
 
     let xpos = ((rem * (this.imgWidth + 10)));
 
-   // console.log('XPOS: ', xpos);
+    // console.log('XPOS: ', xpos);
 
     return xpos;
   }
@@ -126,15 +127,17 @@ export class ArmyChartComponent implements OnInit, AfterViewInit {
     this.imageValues = [];
     let index = 0;
 
-    for (let i = 0; i < this.count; i++, index++) {
-      this.imageValues.push(index + '_DEP');
-    }
 
     for (let i = 0; i < this.diedCount; i++, index++) {
       this.imageValues.push(index + '_DIE');
     }
 
-  // console.log('DATA :', this.imageValues);
+    for (let i = 0; i < this.count; i++, index++) {
+      this.imageValues.push(index + '_DEP');
+    }
+
+
+    // console.log('DATA :', this.imageValues);
 
 
     // let icons = this.svg.select('g').selectAll('.icon');

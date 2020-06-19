@@ -8,6 +8,9 @@ import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 export class HistoricalEventsComponent implements OnInit {
 
   @Input() public events: Array<any>;
+  @Input() public hevents: any;
+  @Input() public eventNames: any;
+
 
   constructor() { }
 

@@ -11,7 +11,8 @@
     class="navTopic"
     (click)="scrollTo('#lootedTreasure')"
     [ngClass]="{ active: isDisp('lootedTreasure') }"
-    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+    >Looted <br />
+    Treasure</a
   >
   <a
     class="navTopic"
@@ -19,21 +20,44 @@
     [ngClass]="{ active: isDisp('impacts') }"
     >Impact of British Rule</a
   >
-  <a class="navTopic" (click)="scrollTo('#lootedResource')"
-    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+  <a
+    class="navTopic"
+    (click)="scrollTo('#lootedResource')"
+    [ngClass]="{ active: isDisp('lootedResource') }"
+    >Looted <br />
+    Resource</a
   >
-  <a class="navTopic" (click)="scrollTo('#events')">
-    People, Places and events
+  <a
+    class="navTopic"
+    (click)="scrollTo('#events')"
+    [ngClass]="{ active: isDisp('events') }"
+  >
+    People, Places <br />
+    and events
   </a>
-  <a class="navTopic" (click)="scrollTo('#events')">Chronology of events</a>
-  <a class="navTopic" (click)="scrollTo('#rulers')"
+
+  <a
+    class="navTopic"
+    (click)="scrollTo('#events')"
+    [ngClass]="{ active: isDisp('events') }"
+    >Chronology of events</a
+  >
+
+  <a
+    class="navTopic"
+    (click)="scrollTo('#rulers')"
+    [ngClass]="{ active: isDisp('rulers') }"
     >Rulers and their <br />
     contribution</a
   >
-  <a class="navTopic" (click)="scrollTo('#tail')"
-    >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a
+  <a
+    class="navTopic"
+    (click)="scrollTo('#tail')"
+    [ngClass]="{ active: isDisp('tail') }"
+    >Credits and Links</a
   >
 </div>
+
 <app-intro id="intro"></app-intro>
 <app-looted-treasure id="lootedTreasure"></app-looted-treasure>
 <app-impact id="impacts"></app-impact>

@@ -8,6 +8,16 @@
   font-size: 40px;
   letter-spacing: 1px;
   font-family: merriweatherBold;
+  border-top: 4px solid #613207;
+  border-bottom: 4px solid #613207;
+}
+
+#headWrapper{
+  border-top: 2px solid #613207;
+  border-bottom: 2px solid #613207;
+  padding: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #impactDate {
@@ -19,7 +29,7 @@
   padding-right: 15px;
   border-right: 1px solid #b7ab9b;
   border-bottom: 1px solid #b7ab9b;
-  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138); 
+  box-shadow: 3px 3px 6px -3px rgba(0, 0, 0, 0.229138);
   color: black;
   font-family: montserratBold;
   font-size: 12px;
@@ -60,21 +70,18 @@
   user-select: none;
   margin-bottom: 10px;
   border-radius: 8px;
-  box-shadow: 1px 1px #9A783F;
+  box-shadow: 1px 1px #9a783f;
 }
 
-.yearHighlight{
-  background: #2B4460;
-  border: 1px solid #D9CCB9;
+.yearHighlight {
+  background: #2b4460;
+  border: 1px solid #d9ccb9;
   border-radius: 8px;
-  color: #CCB33D;
+  color: #ccb33d;
 }
 
-
-#graphEconomy{
+#graphEconomy {
   height: 100%;
-  border-right: 2px solid #9E9383;
-  border-left: 2px solid #9E9383;  
   padding-top: 20px;
   display: flex;
   flex-direction: column;
@@ -82,12 +89,11 @@
   justify-content: space-evenly;
 }
 
-#mapData{
+#mapData {
   padding-left: 40px;
 }
 
-
-#yearIndicator{
+#yearIndicator {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

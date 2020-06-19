@@ -10,9 +10,9 @@ export class RulersComponent implements OnInit {
 
 
   @ViewChild('chart', { static: false }) private chartContainer: ElementRef;
-  @Input() private rulersToHighlight: Array<any>;
   @Input() public rulersImages: Array<any>;
-  @Input() private rulersEvents: any;
+  @Input() public rulersYears: any;
+
 
   margin: any = { top: 0, bottom: 0, left: 0, right: 0 };
   chart: any;
@@ -39,13 +39,13 @@ export class RulersComponent implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     //    console.log('Rulers :', this.rulersToHighlight);
-   // console.log('Images :', this.rulersImages);
+    // console.log('Images :', this.rulersImages);
     //  console.log('Events :', this.rulersEvents);
     //  this.updateCustomChart();
   }
 
-  reload(){
-  //  this.rulersImages = [...this.rulersImages];
+  reload() {
+    //  this.rulersImages = [...this.rulersImages];
   }
 
   createCustomChart() {
@@ -109,9 +109,15 @@ export class RulersComponent implements OnInit {
 
     let name = s[s.length - 1];
     name = name.split('.')[0];
-    return name;
+    return name.trim();
   }
 
+  getYear(url) {
+
+    //  console.log(url, this.getName(url), this.rulersYears.get(this.getName(url)));
+
+    return this.rulersYears.get(this.getName(url));
+  }
 
 
 }
