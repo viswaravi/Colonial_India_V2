@@ -110,7 +110,7 @@ export class ImpactComponent implements OnInit {
         if (prevstate != 'goto') {
           this.yearIndex = (this.yearIndex + 1) % this.limit;
           this.updateyearImage();
-          console.log('Year :', this.years[this.yearIndex]);
+       //   console.log('Year :', this.years[this.yearIndex]);
         }
         if (prevstate == 'goto') {
           prevstate = 'play';
@@ -127,6 +127,7 @@ export class ImpactComponent implements OnInit {
 
 
   toggleState() {
+    console.log('Toggling State');
     if (this.graphState == 'pause') {
       this.playInterval();
     } else if (this.graphState == 'play') {

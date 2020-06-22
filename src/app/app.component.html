@@ -1,67 +1,81 @@
-<app-head></app-head>
+<div *ngIf="!isMobile">
+  <app-head></app-head>
 
-<div id="navBar" #navBar [ngClass]="{ sticky: isSticky }">
-  <a
-    class="navTopic"
-    (click)="scrollTo('#intro')"
-    [ngClass]="{ active: isDisp('intro') }"
-    >Introduction</a
-  >
-  <a
-    class="navTopic"
-    (click)="scrollTo('#lootedTreasure')"
-    [ngClass]="{ active: isDisp('lootedTreasure') }"
-    >Looted <br />
-    Treasure</a
-  >
-  <a
-    class="navTopic"
-    (click)="scrollTo('#impacts')"
-    [ngClass]="{ active: isDisp('impacts') }"
-    >Impact of British Rule</a
-  >
-  <a
-    class="navTopic"
-    (click)="scrollTo('#lootedResource')"
-    [ngClass]="{ active: isDisp('lootedResource') }"
-    >Looted <br />
-    Resource</a
-  >
-  <a
-    class="navTopic"
-    (click)="scrollTo('#events')"
-    [ngClass]="{ active: isDisp('events') }"
-  >
-    People, Places <br />
-    and events
-  </a>
+  <div id="navBar" #navBar [ngClass]="{ sticky: isSticky }">
+    <a
+      class="navTopic"
+      (click)="scrollTo('#intro')"
+      [ngClass]="{ active: isDisp('intro') }"
+      >Introduction</a
+    >
+    <a
+      class="navTopic"
+      (click)="scrollTo('#lootedTreasure')"
+      [ngClass]="{ active: isDisp('lootedTreasure') }"
+      >Looted <br />
+      Treasure</a
+    >
+    <a
+      class="navTopic"
+      (click)="scrollTo('#impacts')"
+      [ngClass]="{ active: isDisp('impacts') }"
+      >Impact of British Rule</a
+    >
+    <a
+      class="navTopic"
+      (click)="scrollTo('#lootedResource')"
+      [ngClass]="{ active: isDisp('lootedResource') }"
+      >Looted <br />
+      Resource</a
+    >
+    <a
+      class="navTopic"
+      (click)="scrollTo('pevents')"
+      [ngClass]="{ active: isDisp('pevents') }"
+    >
+      People, Places <br />
+      and events
+    </a>
 
-  <a
-    class="navTopic"
-    (click)="scrollTo('#events')"
-    [ngClass]="{ active: isDisp('events') }"
-    >Chronology of events</a
-  >
+    <a
+      class="navTopic"
+      (click)="scrollTo('cevents')"
+      [ngClass]="{ active: isDisp('cevents') }"
+      >Chronology of events</a
+    >
 
-  <a
-    class="navTopic"
-    (click)="scrollTo('#rulers')"
-    [ngClass]="{ active: isDisp('rulers') }"
-    >Rulers and their <br />
-    contribution</a
-  >
-  <a
-    class="navTopic"
-    (click)="scrollTo('#tail')"
-    [ngClass]="{ active: isDisp('tail') }"
-    >Credits and Links</a
-  >
+    <a
+      class="navTopic"
+      (click)="scrollTo('#rulers')"
+      [ngClass]="{ active: isDisp('rulers') }"
+      >Rulers and their <br />
+      contribution</a
+    >
+    <a
+      class="navTopic"
+      (click)="scrollTo('#tail')"
+      [ngClass]="{ active: isDisp('tail') }"
+      >Credits and Links</a
+    >
+  </div>
+
+  <app-intro id="intro"></app-intro>
+  <app-looted-treasure id="lootedTreasure"></app-looted-treasure>
+  <app-impact id="impacts"></app-impact>
+  <app-looted-human-resource id="lootedResource"></app-looted-human-resource>
+  <app-places-events id="events" [sectionName]="section"></app-places-events>
+  <app-rulers-contribution id="rulers"></app-rulers-contribution>
+  <app-tail id="tail"> </app-tail>
 </div>
-
-<app-intro id="intro"></app-intro>
-<app-looted-treasure id="lootedTreasure"></app-looted-treasure>
-<app-impact id="impacts"></app-impact>
-<app-looted-human-resource id="lootedResource"></app-looted-human-resource>
-<app-places-events id="events"></app-places-events>
-<app-rulers-contribution id="rulers"></app-rulers-contribution>
-<app-tail id="tail"> </app-tail>
+<div
+  *ngIf="isMobile"
+  style="
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  "
+>
+  <h1>This Site is Not meant to View in Mobile View. Switch to Bigger Screen</h1>
+</div>

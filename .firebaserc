@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "colonialindia-v2"
+  },
+  "targets": {
+    "colonialindia-v2": {
+      "hosting": {
+        "ColonialIndiav2": [
+          "colonialindia-v2"
+        ]
+      }
+    }
   }
 }

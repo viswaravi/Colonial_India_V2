@@ -75,26 +75,29 @@
         ></app-event-timeline>
       </div>
     </div>
-    <div class="col-3" style="border-right: 2px solid #9e9383;">
+    <div class="col-3">
       <p id="yearsText">Rulers</p>
       <app-rulers
         [rulersImages]="rulerImages"
         [rulersYears]="rulersYears"
+        (INrulerHighlight)="rulerContributionsIN($event)"
+        (OUTrulerHighlight)="rulerContributionsOUT()"
       ></app-rulers>
     </div>
-    <div class="col-1"></div>
-
+    <div class="col-1" style="border-right: 2px solid #9e9383;"></div>
     <div
       class="col-6"
       style="
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
         border-radius: 8px;
         padding-right: 0px;
+        padding-left: 40px;
         height: 600px;
         padding: 10px;
+        padding-left: 60px;
         font-family: montserrat;
       "
     >
@@ -108,11 +111,23 @@
       >
         Contributions
       </p>
-      <div style="overflow-y: scroll;">
+
+      <div
+        style="overflow-y: scroll; scroll-behavior: smooth;"
+        *ngIf="!isHovering"
+        #rulersData
+      >
         <div *ngFor="let ruler of rulersToHighlight">
           <h4>{{ ruler }}</h4>
           <div *ngFor="let evt of rulerEvents.get(ruler)">{{ evt }}</div>
+          <br />
+          <br />
         </div>
+      </div>
+
+      <div *ngIf="isHovering">
+        <h4>{{ currentRuler }}</h4>
+        <div *ngFor="let evt of currentContribution">{{ evt }}</div>
       </div>
     </div>
   </div>

@@ -54,9 +54,9 @@ import { HistoricalEventsComponent } from './chartComponents/historical-events/h
   ],
   imports: [
     BrowserModule,
+    InViewportModule,
     AppRoutingModule,
     NgxPageScrollCoreModule.forRoot({ duration: 1500 }),
-    InViewportModule
   ],
   providers: [],
   bootstrap: [AppComponent]

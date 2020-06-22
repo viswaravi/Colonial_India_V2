@@ -1,7 +1,9 @@
 <div id="rulerImages">
   <div
     *ngFor="let ruler of rulersImages"
-    style="margin-bottom: 60px; position: relative;"
+    style="margin-bottom: 70px; position: relative;"
+    (mouseenter)="getContributionIN(ruler)"
+    (mouseleave)="getContributionOUT(ruler)"
   >
     <img src="{{ ruler }}" width="150" height="150" class="rImage" />
     <div class="imgBg" id="{{ ruler }}">

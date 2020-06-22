@@ -68,7 +68,7 @@ export class LootedHumanResourceComponent implements OnInit {
   setActiveArmyContent(place) {
     this.activeArmyContent = ArmyData['default'][place];
     this.activeArmyPlace = place;
-    console.log(this.activeArmyContent);
+    // console.log(this.activeArmyContent);
 
     if (place == 'France' || place == 'Mesopotamia') {
       this.diedCount = 74000;
@@ -110,7 +110,7 @@ export class LootedHumanResourceComponent implements OnInit {
     this.activeLabourContent = LabourData['default'][place];
     this.activeLabourPlace = place;
 
- //   console.log(this.activeLabourContent);
+    //   console.log(this.activeLabourContent);
 
     this.activeLabourCountries = [place];
   }
@@ -134,7 +134,7 @@ export class LootedHumanResourceComponent implements OnInit {
     this.activePeopleContent = PeopleData['default'][place];
     this.activePeopleState = PeopleData['default'][place]['state'];
     this.activePeoplePlace = place;
-   // console.log(this.activePeopleContent, this.activePeoplePlace);
+    // console.log(this.activePeopleContent, this.activePeoplePlace);
   }
 
   isActivePeoplePlace(place) {

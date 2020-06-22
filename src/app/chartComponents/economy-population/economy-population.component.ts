@@ -60,9 +60,11 @@ export class EconomyPopulationComponent implements OnInit {
     //  console.log('Changed State', this.chartState);
     //  console.log('Changed Year ', this.currentYearIndex);
 
+   // console.log(this.currentYearIndex, this.xValues[this.currentYearIndex]);
+
     this.updateYearNames();
     if (this.chartState == 'goto') {
-      console.log('GOTO GRAPH', this.currentYearIndex);
+  //    console.log('GOTO GRAPH', this.currentYearIndex);
       this.localGraphState = 'goto';
       this.gotoChart();
     } else {
@@ -77,7 +79,7 @@ export class EconomyPopulationComponent implements OnInit {
       if (this.currentYearIndex == 0) {
         this.clearChart();
         this.clearYearNames();
-        console.log('RESET GRAPH');
+      //  console.log('RESET GRAPH');
         this.localGraphState = 'empty';
         this.resumeCount = 0;
       }
@@ -85,17 +87,17 @@ export class EconomyPopulationComponent implements OnInit {
       if (this.chartState == 'pause') {
         this.pauseChart();
         this.localGraphState = 'pause';
-        console.log('PAUSE GRAPH');
+     //   console.log('PAUSE GRAPH');
       } else if (this.chartState == 'play') {
         if (this.localGraphState == 'empty') {
           this.playChart();
           this.localGraphState = 'play';
-          console.log('PLAY GRAPH');
+       //   console.log('PLAY GRAPH');
         }
         if ((this.localGraphState == 'pause' || this.localGraphState == 'goto') && (this.currentYearIndex + 1) % 9 != 0) {
           // IF GRAPH IS PAUSED OR CURRENT YEAR NOT AT END, THEN RESUME
           this.resumeChart();
-          console.log('RESUME GRAPH');
+        //  console.log('RESUME GRAPH');
         }
       }
     }
@@ -326,7 +328,7 @@ export class EconomyPopulationComponent implements OnInit {
 
   pauseChart() {
 
-    console.log('Chart Pause');
+   // console.log('Chart Pause');
 
     this.lines = d3.selectAll('.dataLine');
 
@@ -348,7 +350,7 @@ export class EconomyPopulationComponent implements OnInit {
 
   resumeChart() {
 
-    console.log('chart resume', this.offsets);
+   // console.log('chart resume', this.offsets);
 
     this.lines = d3.selectAll('.dataLine');
 
@@ -459,8 +461,8 @@ export class EconomyPopulationComponent implements OnInit {
       if (this.totalLength.length == 0) {
         this.totalLength = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
       }
-      console.log('TL:', this.totalLength);
-      console.log('OFF:', this.offsets);
+    //  console.log('TL:', this.totalLength);
+    //  console.log('OFF:', this.offsets);
 
       for (let i = 0; i < 3; i++) {
         d3.select(this.lines['_groups'][0][i])
@@ -493,26 +495,24 @@ export class EconomyPopulationComponent implements OnInit {
         ;
     });
 
-
     // STORE CUURENT POSITION OF ANIMATION
     this.lines = d3.selectAll('.dataLine');
     this.offsets = [this.lines['_groups'][0][0].getTotalLength(), this.lines['_groups'][0][1].getTotalLength(), this.lines['_groups'][0][2].getTotalLength()];
 
-
-
-    console.log('OFF SAVE:', this.offsets);
-
-
+   // console.log('OFF SAVE:', this.offsets);
   }
-
 
   updateYearNames() {
     let yearData = [];
+   // console.log(data['default']);
     data['default'].map((dt, index) => {
       if (index <= this.currentYearIndex) {
         yearData.push(dt);
+       // console.log(dt, index);
       }
     });
+
+   // console.log(yearData);
 
     yearData.map(dt => {
       this.dataColumns.map(col => {

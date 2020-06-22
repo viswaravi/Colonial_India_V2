@@ -1,6 +1,7 @@
 #humanResourceConatiner {
   padding: 50px;
   padding-top: 20px;
+  padding-left: 10px;
   background-color: #eadcc7;
 }
 
@@ -88,6 +89,7 @@
   justify-content: space-evenly;
   align-items: center;
   border-left: 2px solid #9e9383;
+  border-right: 2px solid #9E9383;
 }
 
 #otherArmyContainer {

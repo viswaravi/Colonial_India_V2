@@ -7,7 +7,12 @@
     -->
     <div
       class="col-4"
-      style="display: flex; flex-direction: row; justify-content: center;"
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      "
     >
       <div id="headWrapper">
         <div id="impactHead">
@@ -16,7 +21,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="col-8">
       <div class="row">
         <div class="col-2" id="eventDate">
@@ -73,7 +78,12 @@
         padding: 0px;
       "
     >
-      <app-key-highlights [showHighlight]="keyHighlights"></app-key-highlights>
+      <p id="yearsText">Key Events</p>
+      <app-key-highlights
+        [showHighlight]="keyHighlights"
+        (INKeyHighlight)="updatePeoplPlacesIN($event)"
+        (OUTKeyHighlight)="updatePeoplPlacesOUT()"
+      ></app-key-highlights>
     </div>
     <div
       class="col-6"
@@ -86,24 +96,77 @@
       "
     >
       <div [ngClass]="{ hide: !isPeople }">
+        <p
+          id="yearsText"
+          style="
+            text-align: center;
+            align-self: center;
+            margin-bottom: 0px !important;
+          "
+        >
+          People and Places
+        </p>
         <app-peoples-map-boxed
-          (INpersonHighlight)="updateHighlightsIN($event)"
-          (OUTpersonHighlight)="updateHighlightsOUT($event)"
+          (INpersonHighlight)="updateHighlightsPersonIN($event)"
+          (OUTpersonHighlight)="updateHighlightsPersonOUT($event)"
           [peopleImages]="peopleImages"
         ></app-peoples-map-boxed>
-        <app-world-highlights [placesToHighlight]="placesToHighlight">
-        </app-world-highlights>
+        <div style="position: relative;">
+          <div
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              margin-left: 10px;
+              margin-top: 10px;
+              position: absolute;
+            "
+          >
+            <img
+              src="../../assets/images/plus.png"
+              height="30"
+              weight="30"
+              style="
+                cursor: pointer;
+                box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+                border-radius: 50%;
+                margin-right: 10px;
+              "
+              (click)="zoomInMap()"
+            />
+            <img
+              src="../../assets/images/minus.png"
+              height="30"
+              weight="30"
+              style="
+                cursor: pointer;
+                box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+                border-radius: 50%;
+              "
+              (click)="zoomOutMap()"
+            />
+          </div>
+          <app-world-highlights
+            [placesToHighlight]="placesToHighlight"
+            (INplaceHighlight)="updateHighlightsPlaceIN($event)"
+            (OUTplaceHighlight)="updateHighlightsPlaceOUT($event)"
+            [zoomLevel]="zoom"
+          >
+          </app-world-highlights>
+        </div>
       </div>
 
-      <div
-        [ngClass]="{ hide: isPeople }"
-        style="overflow-y: scroll; max-height: 700px; overflow-x: hidden;"
-      >
-        <app-historical-events
-          [events]="historicalEvents"
-          [hevents]="HEvents"
-          [eventNames]="eventNames"
-        ></app-historical-events>
+      <div [ngClass]="{ hide: isPeople }">
+        <p id="yearsText" style="text-align: center; align-self: center;">
+          Historical Events
+        </p>
+        <div style="overflow-y: scroll; max-height: 700px; overflow-x: hidden;">
+          <app-historical-events
+            [events]="historicalEvents"
+            [hevents]="HEvents"
+            [eventNames]="eventNames"
+          ></app-historical-events>
+        </div>
       </div>
 
       <img
@@ -111,7 +174,11 @@
         src="../../assets/images/down.png"
         height="50"
         weight="50"
-        style="cursor: pointer;"
+        style="
+          cursor: pointer;
+          box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+          border-radius: 50%;
+        "
         (click)="toggleContent()"
       />
       <img
@@ -119,7 +186,11 @@
         src="../../assets/images/up.png"
         height="50"
         weight="50"
-        style="cursor: pointer;"
+        style="
+          cursor: pointer;
+          box-shadow: 0px 0px 22px rgba(154, 120, 63, 0.991989);
+          border-radius: 50%;
+        "
         (click)="toggleContent()"
       />
     </div>

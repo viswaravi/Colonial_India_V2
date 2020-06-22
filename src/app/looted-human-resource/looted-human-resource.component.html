@@ -1,5 +1,12 @@
 <div id="humanResourceConatiner">
-  <div style="display: flex;flex-direction: row;justify-content: center;margin-bottom: 20px;">
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-bottom: 20px;
+    "
+  >
     <div id="headWrapper">
       <div id="resourceHead">
         <h1>Looted Human Resources</h1>
@@ -27,6 +34,8 @@
       People Died
     </p>
   </div>
+
+  <br />
   <!--*ngIf="isActiveTopic('ARMY')"-->
   <div [ngClass]="{ hide: !isActiveTopic('ARMY') }">
     <div class="row">
@@ -303,8 +312,11 @@
         </div>
       </div>
 
-      <div class="col-5" style="border-left: 2px solid #9e9383;">
-        <p class="graphHead">People Migrated</p>
+      <div
+        class="col-5"
+        style="border-left: 2px solid #9e9383; border-right: 2px solid #9e9383;"
+      >
+        <p class="graphHead">People Died</p>
         <p id="armyIconInfo">
           <img width="40" height="30" src="../../assets/images/labour.png" />
           = 100,000 People
@@ -316,15 +328,15 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding-left: 40px;
+            align-items: flex-start;
+            padding-left: 25px;
           "
         >
           <div *ngIf="activePeoplePlace != 'others'">
             <app-people-chart
               [count]="activePeopleContent['count']"
             ></app-people-chart>
-            <p class="troopInfo">
+            <p class="troopInfo" style="max-width: 600px;">
               {{ activePeopleContent["text"] }}
             </p>
           </div>
@@ -337,9 +349,10 @@
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
+          align-items: center;
         "
       >
-        <p class="graphHead">People Migrated Locations</p>
+        <p class="graphHead">People Died Locations</p>
         <app-people-india-highlights
           [statesToHighlight]="activePeopleState"
         ></app-people-india-highlights>

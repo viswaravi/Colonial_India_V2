@@ -12,7 +12,8 @@ export class RulersComponent implements OnInit {
   @ViewChild('chart', { static: false }) private chartContainer: ElementRef;
   @Input() public rulersImages: Array<any>;
   @Input() public rulersYears: any;
-
+  @Output() INrulerHighlight = new EventEmitter<{ name: String }>();
+  @Output() OUTrulerHighlight = new EventEmitter<{}>();
 
   margin: any = { top: 0, bottom: 0, left: 0, right: 0 };
   chart: any;
@@ -101,6 +102,15 @@ export class RulersComponent implements OnInit {
 
     });
 
+  }
+
+
+  getContributionIN(ruler) {
+    this.INrulerHighlight.emit({ name: this.getName(ruler) });
+  }
+
+  getContributionOUT(ruler) {
+    this.OUTrulerHighlight.emit({});
   }
 
   getName(url) {

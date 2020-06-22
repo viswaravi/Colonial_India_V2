@@ -126,7 +126,7 @@ export class PeopleChartComponent implements OnInit {
       this.imageValues.push(index + '_DEP');
     }
 
-    console.log('DATA :', this.imageValues);
+   // console.log('DATA :', this.imageValues);
 
     // let icons = this.svg.select('g').selectAll('.icon');
 

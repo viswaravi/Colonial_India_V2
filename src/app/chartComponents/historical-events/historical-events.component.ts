@@ -26,7 +26,7 @@ export class HistoricalEventsComponent implements OnInit {
       modifiedEvents.push(event);
     });
 
-    console.log(this.events);
+    // console.log(this.events);
   }
 
 }

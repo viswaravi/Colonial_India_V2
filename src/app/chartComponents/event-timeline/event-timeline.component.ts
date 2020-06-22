@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
-  import * as d3 from 'd3';
+import * as d3 from 'd3';
 
 
 @Component({
@@ -42,30 +42,30 @@ export class EventTimelineComponent implements OnInit {
     let element = this.chartContainer.nativeElement;
     //Need Space for Labels s0 subtract space required to get Heigh and Width of SVG
     this.width = 150;
-    this.height = 600;
+    this.height = 640;
     let svg = d3.select(element).append('svg')
       .attr('width', this.width)
       .attr('height', this.height);
- 
+
     // chart plot area
     this.chart = svg.append('g')
       .attr('class', 'timeLine')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
     let yDomain = [1600, 1950];
-    this.yScale = d3.scaleLinear().domain(yDomain).range([0, 500]);
-    this.SYScale = d3.scaleLinear().domain(yDomain).range([0, 500]);
+    this.yScale = d3.scaleLinear().domain(yDomain).range([0, 610]);
+    this.SYScale = d3.scaleLinear().domain(yDomain).range([0, 610]);
 
     this.yAxis = svg.append('g')
       .attr('class', 'axis axis-y')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`)
       .call(d3.axisLeft(this.yScale).tickSize(0))
       .attr('font-family', 'merriweatherBold')
-      .attr('font-size','16px')
+      .attr('font-size', '16px')
       .call(g => g.select(".domain").remove());
 
     // Set Brush Region
-    this.brush = d3.brushY().extent([[60, 0], [70, this.height - 90]]).on('start brush end', () => this.brushMoved());
+    this.brush = d3.brushY().extent([[60, 0], [70, this.height - 25]]).on('start brush end', () => this.brushMoved());
 
     this.gBrush = svg
       .append("g")
@@ -86,7 +86,7 @@ export class EventTimelineComponent implements OnInit {
       .attr('rx', 5)
       .attr('ry', 5)
       .style('fill', '#2B4460');
-    this.gBrush.call(this.brush.move, [1600, 1950+5].map(this.yScale));
+    this.gBrush.call(this.brush.move, [1600, 1950].map(this.yScale));
 
   }
 

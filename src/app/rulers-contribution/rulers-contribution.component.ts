@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, SimpleChanges } from '@angular/core';
 import * as rulers from '../../assets/data/rulers.json';
 
 @Component({
@@ -8,6 +8,8 @@ import * as rulers from '../../assets/data/rulers.json';
 })
 export class RulersContributionComponent implements OnInit {
 
+
+  @ViewChild("rulersData") dataView: ElementRef;
 
   fromyear: Number;
   toYear: Number;
@@ -24,20 +26,30 @@ export class RulersContributionComponent implements OnInit {
   rulerEvents = new Map();
   rulersYears = new Map();
 
+  // Hover
+  isHovering = false;
+  currentContribution = '';
+  currentRuler = '';
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.dataView.nativeElement.scrollTop = 500;
+  }
+
   ngAfterViewInit() {
     this.getRulers(1600, 1950);
+    console.log(this.dataView.nativeElement);
   }
 
   updateContent(event) {
     this.fromyear = event.fromYear;
     this.toYear = event.toYear;
-    console.log(rulers['default']);
+   // console.log(rulers['default']);
     this.getRulers(this.fromyear, this.toYear);
   }
 
@@ -69,9 +81,9 @@ export class RulersContributionComponent implements OnInit {
       }
     });
 
-  //  console.log('Rulers: ', this.rulersToHighlight);
-  //  console.log('Images: ', this.rulerImages);
-  //  console.log('Events: ', this.rulerEvents);
+    //  console.log('Rulers: ', this.rulersToHighlight);
+    //  console.log('Images: ', this.rulerImages);
+    //  console.log('Events: ', this.rulerEvents);
 
     this.addEvents();
 
@@ -110,5 +122,20 @@ export class RulersContributionComponent implements OnInit {
       }
     }
   }
+
+  rulerContributionsIN(event) {
+    console.log('Ruler IN:', event.name);
+    this.isHovering = true;
+    this.currentContribution = this.rulerEvents.get(event.name);
+    this.currentRuler = event.name;
+  }
+
+  rulerContributionsOUT() {
+    console.log('Ruler OUT');
+    this.isHovering = false;
+    this.currentContribution = '';
+  }
+
+
 
 }

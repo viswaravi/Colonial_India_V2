@@ -1,6 +1,11 @@
 <div id="KeyHighlightsArea">
-    <div *ngFor="let key of keyHighlights" class="highlight" [ngStyle]="getStyle(key)">
-      {{key}}
-    </div>
+  <div
+    *ngFor="let key of keyHighlights"
+    class="highlight"
+    [ngStyle]="getStyle(key)"
+    (mouseenter)="getPeoplePlaces(key)"
+    (mouseleave)="removePeoplePlaces()"
+  >
+    {{ key }}
+  </div>
 </div>
-  
