@@ -22,7 +22,7 @@ export class AppComponent {
   ngOnInit() {
     // console.log('WIDTH:', window.innerWidth);
     if (window.innerWidth < 1500) {
-      this.isMobile = true;
+      this.isMobile = false;
     }
     if (window.innerWidth > 1500) {
       this.isMobile = false;
@@ -33,7 +33,7 @@ export class AppComponent {
   onResize(event) {
     // console.log('WIDTH:', window.innerWidth);
     if (window.innerWidth < 1500) {
-      this.isMobile = true;
+      this.isMobile = false;
     }
     if (window.innerWidth > 1500) {
       this.isMobile = false;
